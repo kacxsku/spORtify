@@ -1,7 +1,7 @@
 package com.spORtify.data.repository;
 
 import com.spORtify.data.entity.Calendar;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CalendarRepository extends CrudRepository<Calendar, Long> {
+public interface CalendarRepository extends JpaRepository<Calendar, Long> {
 }

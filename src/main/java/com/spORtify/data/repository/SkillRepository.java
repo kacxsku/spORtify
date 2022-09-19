@@ -1,7 +1,7 @@
 package com.spORtify.data.repository;
 
 import com.spORtify.data.entity.Skill;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SkillRepository extends CrudRepository<Skill, Long> {
+public interface SkillRepository extends JpaRepository<Skill, Long> {
 }

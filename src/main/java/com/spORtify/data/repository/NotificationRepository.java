@@ -1,7 +1,7 @@
 package com.spORtify.data.repository;
 
 import com.spORtify.data.entity.Notification;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface NotificationRepository extends CrudRepository<Notification, Long> {
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
 }

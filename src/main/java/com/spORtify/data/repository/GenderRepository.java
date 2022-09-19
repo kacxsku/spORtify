@@ -1,7 +1,7 @@
 package com.spORtify.data.repository;
 
 import com.spORtify.data.entity.Gender;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GenderRepository extends CrudRepository<Gender, Long> {
+public interface GenderRepository extends JpaRepository<Gender, Long> {
 }

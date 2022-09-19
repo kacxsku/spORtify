@@ -29,7 +29,7 @@ public class User {
 
     private String description;
 
-    private String paswordHash; //TODO:
+    private String passwordHash; //TODO:
 
     @Lob
     private Blob photo;
