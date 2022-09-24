@@ -9,15 +9,16 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
+@Table(name = "gender")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Gender {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long gender_id;
+    private Long genderId;
 
     @Enumerated(EnumType.ORDINAL)
     private GenderName name;

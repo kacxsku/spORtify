@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "notifications")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,7 +17,7 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long opinion_id;
+    private Long notificationId;
 
     private String title;
 

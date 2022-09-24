@@ -1,16 +1,15 @@
 package com.spORtify.data.entity;
 
+import com.spORtify.data.util.enums.SkillValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "skills")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,5 +17,8 @@ import javax.persistence.Id;
 public class Skill {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long skill_id;
+    private Long skillId;
+
+    @Enumerated(EnumType.ORDINAL)
+    private SkillValue skillValue;
 }

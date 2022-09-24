@@ -9,15 +9,16 @@ import javax.persistence.*;
 import java.sql.Blob;
 
 @Entity
-@NoArgsConstructor
+@Table(name = "users")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long user_id;
+    private Long userId;
 
     private String name;
 
@@ -29,13 +30,16 @@ public class User {
 
     private String description;
 
-    private String passwordHash; //TODO:
+    private String password;
 
     @Lob
     private Blob photo;
 
-    private Long address_id;
+//    @JoinColumn(name = "address_id", nullable = false)
+//    private Address address;
 
-    private Long gender_id;
+    @OneToOne
+    @JoinColumn(name = "gender_id", nullable = false)
+    private Gender gender;
 
 }

@@ -1,20 +1,22 @@
 package com.spORtify.data.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Table(name = "announcement")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Announcement {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long announcement_id;
+    private Long announcementId;
 
     private String title;
 

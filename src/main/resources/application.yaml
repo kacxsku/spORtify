@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ec2-54-220-255-121.eu-west-1.compute.amazonaws.com:5432/ddmod4m10hf3dv
+    username: krtodurossoctk
+    password: 54976eb392674ce2b559edddb6da61602fe786693ed3793443165b27250fd666
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        use_sql_comments: true
+        default_schema:
+    generate-ddl: true

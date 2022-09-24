@@ -9,14 +9,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
+@Table(name = "opinion")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Opinion {
 
     @Id
-    private Long opinion_id;
+    private Long opinionId;
 
     @Enumerated(EnumType.ORDINAL)
     private OpinionValue opinion;

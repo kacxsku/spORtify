@@ -1,4 +1,4 @@
-package com.spORtify.app;
+package com.spORtify;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
