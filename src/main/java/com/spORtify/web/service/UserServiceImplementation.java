@@ -3,6 +3,8 @@ package com.spORtify.web.service;
 import com.spORtify.data.entity.User;
 import com.spORtify.data.repository.UserRepository;
 import com.spORtify.web.dto.UserDto;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,4 +41,11 @@ public class UserServiceImplementation implements UserService {
         return user;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        var user = userRepository.findUserByEmail(email);
+
+        // TODO: exception
+        return org.springframework.security.core.userdetails.User.withUsername(user.getEmail()).password(user.getPassword()).build();
+    }
 }

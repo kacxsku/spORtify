@@ -3,6 +3,8 @@ package com.spORtify.web.utilities;
 public class Constants {
 
     public static final String BASE_PATH = "/";
+
+    public static final String BASE_REGEX_PATH = "**";
     public static final String LOGIN_PATH = BASE_PATH + "login/";
     public static final String RESET_CREDENTIALS_PATH = LOGIN_PATH + "reset";
 
@@ -17,6 +19,8 @@ public class Constants {
     public static final String DENIED_PAGE_PATH = BASE_PATH + "denied/page";
 
     public static final String USER_PATH = BASE_PATH + "user";
+
+
 
 
 
