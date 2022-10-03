@@ -1,4 +1,4 @@
-package com.spORtify.web.service;
+package com.spORtify.web.service.user;
 
 import com.spORtify.data.entity.User;
 import com.spORtify.data.repository.UserRepository;
@@ -39,6 +39,22 @@ public class UserServiceImplementation implements UserService {
         var user = userRepository.findUserByEmailAndPassword(email, password);
 
         return user;
+    }
+
+    @Override
+    public User findUserById(Long id) {
+        var user = userRepository.findUserByUserId(id);
+        return user;
+    }
+
+    @Override
+    public String updatePrivateData(Long id) {
+        var userByUserId = userRepository.findUserByUserId(id);
+
+        //TODO check and  data
+
+        userRepository.save(userByUserId);
+        return "OK";
     }
 
     @Override

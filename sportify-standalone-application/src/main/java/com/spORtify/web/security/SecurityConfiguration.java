@@ -1,6 +1,6 @@
 package com.spORtify.web.security;
 
-import com.spORtify.web.service.UserService;
+import com.spORtify.web.service.user.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,4 +1,4 @@
-package com.spORtify.web.service;
+package com.spORtify.web.service.user;
 
 import com.spORtify.data.entity.User;
 import com.spORtify.web.dto.UserDto;
@@ -12,4 +12,7 @@ public interface UserService extends UserDetailsService {
 
     User findUserByEmailAndPassword(String email, String password);
 
+    User findUserById(Long id);
+
+    String updatePrivateData(Long id);
 }

@@ -1,7 +1,7 @@
 package com.spORtify.web.controller;
 
 import com.spORtify.web.dto.UserDto;
-import com.spORtify.web.service.UserService;
+import com.spORtify.web.service.user.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

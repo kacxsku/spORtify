@@ -3,5 +3,5 @@ package com.spORtify.web.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
-public class AnnouncementController {
+public class AnnouncementController  {
 }
