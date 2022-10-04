@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Set;
 
 @Entity
 @Table(name = "announcement")
@@ -14,6 +16,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Announcement {
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long announcementId;
@@ -24,4 +27,8 @@ public class Announcement {
 
     @ManyToOne
     private User user;
+
+    @OneToMany
+    @JoinColumn(name = "skill_id", nullable = false)
+    private Set<Skill> skills;
 }

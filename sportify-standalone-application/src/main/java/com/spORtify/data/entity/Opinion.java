@@ -21,4 +21,5 @@ public class Opinion {
 
     @Enumerated(EnumType.ORDINAL)
     private OpinionValue opinion;
+
 }

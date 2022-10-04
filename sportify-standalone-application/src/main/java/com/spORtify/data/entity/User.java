@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -41,5 +42,9 @@ public class User {
     @OneToOne
     @JoinColumn(name = "gender_id", nullable = false)
     private Gender gender;
+
+    @OneToMany
+    @JoinColumn(name = "opinion_id", nullable = false)
+    private List<Opinion> opinions;
 
 }

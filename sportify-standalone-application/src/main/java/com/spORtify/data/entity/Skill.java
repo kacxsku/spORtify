@@ -19,6 +19,9 @@ public class Skill {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long skillId;
 
+    private String skill_name;
+
     @Enumerated(EnumType.ORDINAL)
     private SkillValue skillValue;
+
 }
