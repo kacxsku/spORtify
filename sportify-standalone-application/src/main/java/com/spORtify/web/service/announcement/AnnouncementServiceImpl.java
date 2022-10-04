@@ -2,9 +2,11 @@ package com.spORtify.web.service.announcement;
 
 import com.spORtify.data.entity.Announcement;
 import com.spORtify.data.repository.AnnouncementRepository;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
 public class AnnouncementServiceImpl implements AnnouncementService{
 
     private AnnouncementRepository announcementRepository;

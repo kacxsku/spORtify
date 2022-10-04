@@ -2,6 +2,7 @@ package com.spORtify.web.controller;
 
 import com.spORtify.data.entity.Announcement;
 import com.spORtify.web.service.announcement.AnnouncementService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import static com.spORtify.web.utilities.Constants.ANNOUNCEMENT_PATH;
 @RestController
 public class AnnouncementController {
 
+    @Autowired
     private AnnouncementService announcementService;
 
     @PostMapping(ANNOUNCEMENT_PATH + "/add")
@@ -30,8 +32,7 @@ public class AnnouncementController {
     }
     @PostMapping(ANNOUNCEMENTS_PATH)
     public List<Announcement> getAllAnnouncements() {
-        var announcementsList = announcementService.getAllAnnouncements();
-        return announcementsList;
+        return announcementService.getAllAnnouncements();
     }
 
 
