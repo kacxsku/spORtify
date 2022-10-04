@@ -20,6 +20,9 @@ public class Constants {
 
     public static final String USER_PATH = BASE_PATH + "user";
 
+    public static final String ANNOUNCEMENTS_PATH = BASE_PATH + "announcements";
+    public static final String ANNOUNCEMENT_PATH = BASE_PATH + "announcement";
+
 
 
 
