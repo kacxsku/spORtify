@@ -4,7 +4,6 @@ import com.spORtify.data.entity.User;
 import com.spORtify.data.repository.UserRepository;
 import com.spORtify.web.dto.UserDto;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.Set;
 
 @Entity
@@ -26,7 +25,12 @@ public class Announcement {
     private String content;
 
     @ManyToOne
-    private User user;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User creator;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User participant;
 
     @OneToMany
     @JoinColumn(name = "skill_id", nullable = false)

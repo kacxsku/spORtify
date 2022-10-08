@@ -1,6 +1,7 @@
 package com.spORtify.web.service.announcement;
 
 import com.spORtify.data.entity.Announcement;
+import com.spORtify.web.dto.AnnouncementDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,5 +14,7 @@ public interface AnnouncementService {
 
     void deleteAnnouncement(String id);
 
-    void addAnnouncement(Announcement announcement);
+    void addAnnouncement(AnnouncementDto announcement);
+
+    void assignParticipantToAnnouncement(String announcementId,String userId);
 }
