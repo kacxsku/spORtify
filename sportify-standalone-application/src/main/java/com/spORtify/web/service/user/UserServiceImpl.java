@@ -1,35 +1,22 @@
 package com.spORtify.web.service.user;
 
-import com.spORtify.data.entity.Gender;
 import com.spORtify.data.entity.User;
 import com.spORtify.data.repository.UserRepository;
-import com.spORtify.web.dto.LoginDto;
 import com.spORtify.web.dto.UserDto;
+import com.spORtify.web.service.mapper.UserDtoMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
-    private AuthenticationManager authenticationManager;
 
+    private UserDtoMapper mapper;
     @Override
     public void saveUser(UserDto userDto) {
-        var user = new User();
-        user.setName(userDto.getName());
-        user.setSurname(userDto.getSurname());
-        user.setEmail(userDto.getEmail());
-        user.setPhoneNumber(userDto.getPhoneNumber());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-
+        var user = mapper.mapDto(userDto);
         userRepository.save(user);
     }
 
@@ -48,52 +35,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(Long id) {
-        var user = userRepository.findUserByUserId(id);
+    public User findUserById(String  id) {
+        var user = userRepository.findUserByUserId(parseId(id));
         return user;
     }
 
     @Override
-    public String updatePrivateData(Long id) {
-        var userByUserId = userRepository.findUserByUserId(id);
+    public String updatePrivateData(String id) {
+        var userByUserId = userRepository.findUserByUserId(parseId(id));
 
         //TODO check and  data
 
         userRepository.save(userByUserId);
         return "OK";
-    }
-
-    @Override
-    public String updateUserPassword(LoginDto loginDto) {
-        var user = userRepository.findUserByEmail(loginDto.getEmail());
-        user.setPassword(loginDto.getPassword());
-        userRepository.save(user);
-        return null;
-    }
-
-    @Override
-    public String loginUser(LoginDto loginDto) {
-        try{
-            var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                    loginDto.getEmail(), loginDto.getPassword()
-            ));
-            SecurityContextHolder
-                    .getContext()
-                    .setAuthentication(authentication);
-        } catch (AuthenticationException e){
-            return "User with this credentials does not exists";
-        }
-        return "Credentials has been changed";
-    }
-
-    @Override
-    public String createUser(UserDto userDto) {
-        if (userRepository.findUserByEmail(userDto.getEmail()) == null) {
-            var user = mapUserDtoToUser(userDto);
-            userRepository.save(user);
-            return "User Created Successfully";
-        }
-        return "User already exists";
     }
 
     @Override
@@ -104,19 +58,8 @@ public class UserServiceImpl implements UserService {
         return org.springframework.security.core.userdetails.User.withUsername(user.getEmail()).password(user.getPassword()).build();
     }
 
-    private User mapUserDtoToUser(UserDto userDto){
-        var user = new User();
-
-        var gender = new Gender();
-        gender.setName(userDto.getGender());
-
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setName(userDto.getName());
-        user.setSurname(userDto.getSurname());
-        user.setPhoneNumber(userDto.getPhoneNumber());
-        user.setDescription(userDto.getDescription());
-        user.setGender(gender);
-        return user;
+    private Long parseId(String id){
+        return Long.parseLong(id);
     }
+
 }

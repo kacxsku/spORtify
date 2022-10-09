@@ -3,18 +3,15 @@ package com.spORtify.web.controller;
 import com.spORtify.data.entity.Announcement;
 import com.spORtify.web.dto.AnnouncementDto;
 import com.spORtify.web.service.announcement.AnnouncementService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import static com.spORtify.web.utilities.Constants.ANNOUNCEMENTS_PATH;
 import static com.spORtify.web.utilities.Constants.ANNOUNCEMENT_PATH;
 
 @RestController
+@AllArgsConstructor
 public class AnnouncementController {
 
-    @Autowired
     private AnnouncementService announcementService;
 
     @PostMapping(ANNOUNCEMENT_PATH + "/add")
@@ -27,13 +24,9 @@ public class AnnouncementController {
         announcementService.deleteAnnouncement(id);
     }
 
-    @PutMapping(ANNOUNCEMENT_PATH)
-    public Announcement updateAnnouncement(@RequestBody Announcement announcement) {
-        return announcementService.updateAnnouncement(announcement);
-    }
-    @PostMapping(ANNOUNCEMENTS_PATH)
-    public List<Announcement> getAllAnnouncements() {
-        return announcementService.getAllAnnouncements();
+    @PutMapping(ANNOUNCEMENT_PATH + "{announcementToUpdateId}")
+    public Announcement updateAnnouncement(@RequestBody AnnouncementDto announcementDto, @PathVariable String announcementToUpdateId) {
+        return announcementService.updateAnnouncement(announcementToUpdateId,announcementDto);
     }
 
     @PostMapping(ANNOUNCEMENT_PATH + "/assign/{announcementId}/{userId}")
