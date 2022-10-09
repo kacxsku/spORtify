@@ -9,7 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "opinion")
+@Table(name = "opinions")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,9 +17,10 @@ import javax.persistence.*;
 public class Opinion {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long opinionId;
 
     @Enumerated(EnumType.ORDINAL)
-    private OpinionValue opinion;
+    private OpinionValue opinionValue;
 
 }

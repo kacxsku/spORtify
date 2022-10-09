@@ -28,14 +28,14 @@ public class Announcement {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", insertable=false, updatable=false, nullable = false)
     private User creator;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId", insertable=false, updatable=false)
     private User participant;
 
     @OneToMany
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinColumn(name = "skillId", nullable = false, insertable=false, updatable=false)
     private Set<Skill> skills;
 }

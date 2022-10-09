@@ -40,11 +40,11 @@ public class User {
 //    private Address address;
 
     @OneToOne
-    @JoinColumn(name = "gender_id", nullable = false)
+    @JoinColumn(name = "genderId", insertable=false, updatable=false)
     private Gender gender;
 
     @OneToMany
-    @JoinColumn(name = "opinion_id", nullable = false)
+    @JoinColumn(name = "opinionId", insertable=false, updatable=false)
     private List<Opinion> opinions;
 
 }

@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Table(name = "announcement")
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
 public class Coordinate {

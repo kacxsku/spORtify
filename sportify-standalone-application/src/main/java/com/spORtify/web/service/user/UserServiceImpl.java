@@ -3,11 +3,13 @@ package com.spORtify.web.service.user;
 import com.spORtify.data.entity.User;
 import com.spORtify.data.repository.UserRepository;
 import com.spORtify.web.dto.UserDto;
-import com.spORtify.web.service.mapper.UserDtoMapper;
+import com.spORtify.web.utilities.mapper.UserDtoMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
@@ -22,22 +24,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByEmail(String email) {
-        var user = userRepository.findUserByEmail(email);
 
-        return user;
+        return userRepository.findUserByEmail(email);
     }
 
     @Override
     public User findUserByEmailAndPassword(String email, String password) {
-        var user = userRepository.findUserByEmailAndPassword(email, password);
 
-        return user;
+        return userRepository.findUserByEmailAndPassword(email, password);
     }
 
     @Override
     public User findUserById(String  id) {
-        var user = userRepository.findUserByUserId(parseId(id));
-        return user;
+        return userRepository.findUserByUserId(parseId(id));
     }
 
     @Override

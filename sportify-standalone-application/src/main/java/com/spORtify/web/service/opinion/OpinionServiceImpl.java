@@ -4,9 +4,11 @@ import com.spORtify.data.entity.Opinion;
 import com.spORtify.data.repository.UserRepository;
 import com.spORtify.data.util.enums.OpinionValue;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @AllArgsConstructor
 public class OpinionServiceImpl implements OpinionService{
 
@@ -22,7 +24,7 @@ public class OpinionServiceImpl implements OpinionService{
         var id = Long.parseLong(userId);
         var user = userRepository.findUserByUserId(id);
         var opinion = new Opinion();
-        opinion.setOpinion(OpinionValue.valueOf(value));
+        opinion.setOpinionValue(OpinionValue.valueOf(value));
         user.getOpinions().add(opinion);
         userRepository.save(user);
     }

@@ -6,11 +6,14 @@ import com.spORtify.data.repository.AnnouncementRepository;
 import com.spORtify.data.repository.CoordinateRepository;
 import com.spORtify.data.repository.UserRepository;
 import com.spORtify.web.dto.AnnouncementDto;
-import com.spORtify.web.service.mapper.AnnouncementDtoMapper;
+import com.spORtify.web.utilities.mapper.AnnouncementDtoMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 @AllArgsConstructor
 public class AnnouncementServiceImpl implements AnnouncementService{
 
