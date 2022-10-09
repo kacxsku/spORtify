@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -23,6 +24,8 @@ public class Announcement {
     private String title;
 
     private String content;
+
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

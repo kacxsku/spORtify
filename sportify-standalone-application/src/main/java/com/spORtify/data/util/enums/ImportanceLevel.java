@@ -7,7 +7,6 @@ import lombok.Getter;
 @Getter
 public enum ImportanceLevel {
     CRITICAL,
-    HIGH,
     MEDIUM,
     LOW
 }
