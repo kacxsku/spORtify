@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,15 +28,18 @@ public class Announcement {
 
     private Date date;
 
-    @ManyToOne
-    @JoinColumn(name = "userId", insertable=false, updatable=false, nullable = false)
+    @OneToOne
+    @JoinColumn(name = "creator", insertable=false, updatable=false, nullable = false)
     private User creator;
 
     @OneToOne
-    @JoinColumn(name = "userId", insertable=false, updatable=false)
+    @JoinColumn(name = "participant", insertable=false, updatable=false)
     private User participant;
 
-    @OneToMany
-    @JoinColumn(name = "skillId", nullable = false, insertable=false, updatable=false)
-    private Set<Skill> skills;
+    @OneToOne
+    @JoinColumn(name = "coordinateId", nullable = false, insertable = false, updatable = false)
+    private Coordinate coordinate;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Skill> skills = new HashSet<>();
 }

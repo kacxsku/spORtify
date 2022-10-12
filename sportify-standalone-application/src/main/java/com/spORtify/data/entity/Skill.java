@@ -1,6 +1,5 @@
 package com.spORtify.data.entity;
 
-import com.spORtify.data.util.enums.SkillValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,8 @@ public class Skill {
 
     private String skill_name;
 
-    @Enumerated(EnumType.ORDINAL)
+    @OneToOne
+    @JoinColumn(name = "skillValueId", insertable=false, updatable=false)
     private SkillValue skillValue;
 
 }

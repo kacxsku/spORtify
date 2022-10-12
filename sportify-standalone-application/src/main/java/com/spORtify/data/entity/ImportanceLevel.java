@@ -1,6 +1,5 @@
 package com.spORtify.data.entity;
 
-import com.spORtify.data.util.enums.GenderName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,17 +8,16 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "gender")
+@Table(name = "importance_level")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Gender {
+public class ImportanceLevel {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long genderId;
+    private Long ImportanceLevelId;
 
-    private String name;
-
+    private Long value;
 }

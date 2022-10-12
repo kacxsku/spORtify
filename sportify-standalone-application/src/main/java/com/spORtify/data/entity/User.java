@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -40,11 +42,10 @@ public class User {
 //    private Address address;
 
     @OneToOne
-    @JoinColumn(name = "genderId", insertable=false, updatable=false)
+    @JoinColumn(name = "gender", insertable=false, updatable=false)
     private Gender gender;
 
-    @OneToMany
-    @JoinColumn(name = "opinionId", insertable=false, updatable=false)
-    private List<Opinion> opinions;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Opinion> opinions = new ArrayList<>();
 
 }

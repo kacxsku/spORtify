@@ -8,15 +8,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "reminders")
+@Table(name = "skill_value")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Reminder {
-
+public class SkillValue {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long reminderId;
+    private Long skillValueId;
 
+    private Long value;
 }

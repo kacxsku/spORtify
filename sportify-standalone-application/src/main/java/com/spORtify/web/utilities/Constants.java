@@ -4,7 +4,7 @@ public class Constants {
 
     public static final String BASE_PATH = "/";
     public static final String HOME_PATH = BASE_PATH + "home";
-    public static final String BASE_REGEX_PATH = "**";
+    public static final String BASE_REGEX_PATH = "/**";
 
     //security
     public static final String AUTHORIZATION_PATH = "/authorization";

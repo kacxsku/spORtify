@@ -1,6 +1,5 @@
 package com.spORtify.data.entity;
 
-import com.spORtify.data.util.enums.ImportanceLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +19,8 @@ public class Notification {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long notificationId;
 
-    @Enumerated(EnumType.ORDINAL)
+    @OneToOne
+    @JoinColumn(name = "ImportanceLevelId", nullable = false, insertable=false, updatable=false)
     private ImportanceLevel importanceLevel;
 
     private String title;

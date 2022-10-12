@@ -20,7 +20,6 @@ import static com.spORtify.web.utilities.Constants.*;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfiguration {
 
     @Resource
@@ -48,28 +47,33 @@ public class SecurityConfiguration {
                 .build();
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         return security
-                .csrf().disable()
-                .cors().disable()
-                .formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                .permitAll()
-                )
                 .authorizeRequests()
-                .antMatchers(BASE_PATH, LOGIN_PATH + BASE_REGEX_PATH, HOME_PATH + BASE_REGEX_PATH)
-                .anonymous()
-                .anyRequest()
-                .authenticated()
+//                .antMatchers(BASE_PATH, HOME_PATH, REGISTRATION_PATH, LOGIN_PATH, LOGIN_CHANGE_PASSWORD_PATH).permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/**").authenticated()
                 .and()
-                .httpBasic()
+                .formLogin()
+//                .loginPage(LOGIN_PATH)
+                .permitAll()
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+//                .loginProcessingUrl(LOGIN_PATH + "/process")
+//                .defaultSuccessUrl(USER_PATH)
+//                .failureUrl(LOGIN_PATH +"?error=true")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/logout" + "/process")
+//                .invalidateHttpSession(true)
+//                .deleteCookies("JSESSIONID")
+//                .permitAll()
+//                .and()
+//                .csrf()
+//                .disable()
+//                .cors()
+//                .disable()
                 .build();
     }
 

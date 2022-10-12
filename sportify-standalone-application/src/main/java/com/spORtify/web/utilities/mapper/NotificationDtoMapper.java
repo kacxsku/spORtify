@@ -19,7 +19,7 @@ public class NotificationDtoMapper implements DtoMapper<Notification, Notificati
 
         var notification = new Notification();
         notification.setTitle(objectToMap.getTitle());
-        notification.setImportanceLevel(objectToMap.getImportanceLevel());
+//        notification.setImportanceLevel(objectToMap.getImportanceLevel());
         notification.setDescription(objectToMap.getDescription());
         notification.setUser(user);
 

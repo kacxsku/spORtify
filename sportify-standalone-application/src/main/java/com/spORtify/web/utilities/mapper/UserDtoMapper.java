@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-
 public class UserDtoMapper implements DtoMapper<User, UserDto>{
 
     @Autowired
