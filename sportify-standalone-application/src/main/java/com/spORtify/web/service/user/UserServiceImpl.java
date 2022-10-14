@@ -42,8 +42,6 @@ public class UserServiceImpl implements UserService {
     public String updatePrivateData(String id) {
         var userByUserId = userRepository.findUserByUserId(parseId(id));
 
-        //TODO check and  data
-
         userRepository.save(userByUserId);
         return "OK";
     }
@@ -52,7 +50,6 @@ public class UserServiceImpl implements UserService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         var user = userRepository.findUserByEmail(email);
 
-        // TODO: exception
         return org.springframework.security.core.userdetails.User.withUsername(user.getEmail()).password(user.getPassword()).build();
     }
 

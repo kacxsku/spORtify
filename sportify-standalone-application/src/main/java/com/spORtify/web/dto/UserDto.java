@@ -1,7 +1,6 @@
 package com.spORtify.web.dto;
 
 import com.spORtify.data.entity.Address;
-import com.spORtify.data.util.enums.GenderName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +18,7 @@ public class UserDto {
 
     private String phoneNumber;
 
-    private GenderName gender;
+    private String gender;
 
     private String password;
 

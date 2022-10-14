@@ -1,5 +1,6 @@
 package com.spORtify.web.utilities.mapper;
 
+import com.spORtify.data.entity.Gender;
 import com.spORtify.data.entity.User;
 import com.spORtify.web.dto.UserDto;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,13 @@ public class UserDtoMapper implements DtoMapper<User, UserDto>{
 
     @Override
     public User mapDto(UserDto objectToMap) {
+        var gender = new Gender();
+        gender.setName(objectToMap.getGender());
+
         var user = new User();
         user.setName(objectToMap.getName());
         user.setSurname(objectToMap.getSurname());
+        user.setGender(gender);
         user.setEmail(objectToMap.getEmail());
         user.setPhoneNumber(objectToMap.getPhoneNumber());
         user.setPassword(passwordEncoder.encode(objectToMap.getPassword()));

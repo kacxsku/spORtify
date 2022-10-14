@@ -1,11 +1,16 @@
 package com.spORtify.data.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Blob;
+import java.text.DecimalFormat;
 
 @Entity
-@Table(name = "announcement")
+@Table(name = "coordinates")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,7 +21,7 @@ public class Coordinate {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long coordinateId;
 
-    private  Long longitude;
+    private Double longitude;
 
-    private Long latitude;
+    private Double latitude;
 }

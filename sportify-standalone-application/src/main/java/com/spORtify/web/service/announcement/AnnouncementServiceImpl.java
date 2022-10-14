@@ -45,17 +45,9 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 
     @Override
     public void addAnnouncement(AnnouncementDto announcementDto) {
+        var announcement = announcementDtoMapper.mapDto(announcementDto);
 
-        var coordinate = new Coordinate();
-        coordinate.setLatitude(announcementDto.getCoordinate().getLatitude());
-        coordinate.setLongitude(announcementDto.getCoordinate().getLongitude());
-        var announcement = new Announcement();
-        announcement.setCreator(announcementDto.getCreator());
-        announcement.setContent(announcementDto.getContent());
-        announcement.setTitle(announcementDto.getTitle());
-        announcement.setSkills(announcementDto.getSkills());
-
-        coordinateRepository.save(coordinate);
+        coordinateRepository.save(announcement.getCoordinate());
         announcementRepository.save(announcement);
     }
 

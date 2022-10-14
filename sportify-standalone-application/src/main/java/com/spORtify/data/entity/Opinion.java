@@ -20,11 +20,11 @@ public class Opinion {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long opinionId;
 
-    @Enumerated(EnumType.ORDINAL)
-    private OpinionValue opinionValue;
+    @OneToOne
+    @JoinColumn(name = "valueId", insertable=false, updatable=false)
+    private SkillValue opinionValue;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String opinionDescription;
+
 
 }
