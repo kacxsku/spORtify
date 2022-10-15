@@ -1,6 +1,5 @@
 package com.spORtify.data.entity;
 
-import com.spORtify.data.util.enums.OpinionValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,7 @@ public class Opinion {
     private Long opinionId;
 
     @OneToOne
-    @JoinColumn(name = "valueId", insertable=false, updatable=false)
+    @JoinColumn(name = "opinionValue", insertable=false, updatable=false)
     private SkillValue opinionValue;
 
     private String opinionDescription;

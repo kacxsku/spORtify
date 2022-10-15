@@ -4,13 +4,12 @@ import com.spORtify.data.entity.Announcement;
 import com.spORtify.web.dto.AnnouncementDto;
 import com.spORtify.web.service.announcement.AnnouncementService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import static com.spORtify.web.utilities.Constants.ANNOUNCEMENT_PATH;
 
 @RestController
+@AllArgsConstructor
 public class AnnouncementController {
 
     private AnnouncementService announcementService;

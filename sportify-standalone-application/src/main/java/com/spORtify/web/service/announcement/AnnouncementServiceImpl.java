@@ -1,7 +1,6 @@
 package com.spORtify.web.service.announcement;
 
 import com.spORtify.data.entity.Announcement;
-import com.spORtify.data.entity.Coordinate;
 import com.spORtify.data.repository.AnnouncementRepository;
 import com.spORtify.data.repository.CoordinateRepository;
 import com.spORtify.data.repository.UserRepository;

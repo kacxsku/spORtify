@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -38,8 +37,9 @@ public class User {
     @Lob
     private Blob photo;
 
-//    @JoinColumn(name = "address_id", nullable = false)
-//    private Address address;
+    @OneToOne
+    @JoinColumn(name = "address", insertable=false, updatable=false)
+    private Address address;
 
     @OneToOne
     @JoinColumn(name = "gender", insertable=false, updatable=false)

@@ -1,6 +1,5 @@
 package com.spORtify.data.entity;
 
-import com.spORtify.data.util.enums.GenderName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

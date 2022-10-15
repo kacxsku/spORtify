@@ -2,6 +2,7 @@ package com.spORtify.web.controller;
 
 import com.spORtify.data.entity.Announcement;
 import com.spORtify.data.entity.User;
+import com.spORtify.web.dto.OpinionDto;
 import com.spORtify.web.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,6 @@ public class UserController {
      return userService.updatePrivateData(id);
     }
 
-
     @PostMapping(USER_CHANGE_PHOTO_PATH + "/{id}")
     public String changeUserPhoto(@PathVariable String id) {
         return "";
@@ -36,14 +36,5 @@ public class UserController {
     public String changeDescription(@PathVariable String id) {
         return "";
     }
-
-    public List<Announcement> getUserPreviousActivities(){
-        return null;
-    }
-
-    public List<Announcement> getUserPreviousAnnouncements(){
-        return null;
-    }
-
 
 }

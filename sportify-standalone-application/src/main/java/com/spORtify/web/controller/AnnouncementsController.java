@@ -17,7 +17,8 @@ public class AnnouncementsController {
     private AnnouncementService announcementService;
 
     @PostMapping(ANNOUNCEMENTS_PATH)
-    public List<Announcement> getAnnouncements() {
+    public List<Announcement> getAllAnnouncements() {
         return announcementService.getAllAnnouncements();
     }
+
 }
