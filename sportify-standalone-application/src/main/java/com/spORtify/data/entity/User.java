@@ -35,7 +35,7 @@ public class User {
     private String password;
 
     @Lob
-    private Blob photo;
+    private byte[] photo;
 
     @OneToOne
     @JoinColumn(name = "address", insertable=false, updatable=false)

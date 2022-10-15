@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.session.web.http.CookieSerializer;
+import org.springframework.session.web.http.DefaultCookieSerializer;
 
 import javax.annotation.Resource;
 
@@ -71,6 +73,16 @@ public class SecurityConfiguration {
 //                .cors()
 //                .disable()
                 .build();
+    }
+
+    @Bean
+    public CookieSerializer cookieSerializer() {
+        var serializer = new DefaultCookieSerializer();
+        serializer.setCookieName("USERSESSION");
+        serializer.setCookiePath("/");
+        serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
+
+        return serializer;
     }
 
 }

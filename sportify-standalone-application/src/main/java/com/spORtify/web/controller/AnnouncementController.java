@@ -24,7 +24,7 @@ public class AnnouncementController {
         announcementService.deleteAnnouncement(id);
     }
 
-    @PutMapping(ANNOUNCEMENT_PATH + "{announcementToUpdateId}")
+    @PutMapping(ANNOUNCEMENT_PATH + "/{announcementToUpdateId}")
     public Announcement updateAnnouncement(@RequestBody AnnouncementDto announcementDto, @PathVariable String announcementToUpdateId) {
         return announcementService.updateAnnouncement(announcementToUpdateId,announcementDto);
     }

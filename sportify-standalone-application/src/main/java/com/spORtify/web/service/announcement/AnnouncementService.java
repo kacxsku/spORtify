@@ -16,4 +16,5 @@ public interface AnnouncementService {
     void addAnnouncement(AnnouncementDto announcement);
 
     void assignParticipantToAnnouncement(String announcementId,String userId);
+
 }

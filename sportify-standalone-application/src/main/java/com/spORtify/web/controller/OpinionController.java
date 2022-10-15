@@ -22,7 +22,7 @@ public class OpinionController {
         opinionService.createOpinionForUser(opinionDto);
     }
 
-    @GetMapping(OPINIONS_PATH + "{id}")
+    @GetMapping(OPINIONS_PATH + "/{id}")
     public List<Opinion> getAllOpinionForUser(@PathVariable String id){
         return opinionService.getOpinionsForUser(id);
     }

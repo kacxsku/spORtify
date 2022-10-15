@@ -15,9 +15,9 @@ public class Constants {
 
     //user
     public static final String USER_PATH = "/user";
-    public static final String USER_CHANGE_PRIVATE_DATA_PATH = USER_PATH + "/change/private/";
-    public static final String USER_CHANGE_PHOTO_PATH = USER_PATH + "/change/photo/";
-    public static final String USER_CHANGE_DESCRIPTION_PATH = USER_PATH + "/change/description/";
+    public static final String USER_CHANGE_PRIVATE_DATA_PATH = USER_PATH + "/change/private";
+    public static final String USER_CHANGE_PHOTO_PATH = USER_PATH + "/change/photo";
+    public static final String USER_CHANGE_DESCRIPTION_PATH = USER_PATH + "/change/description";
 
     // announcement
     public static final String ANNOUNCEMENT_PATH = "/announcement";
