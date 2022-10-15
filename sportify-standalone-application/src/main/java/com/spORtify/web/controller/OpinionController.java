@@ -4,6 +4,8 @@ import com.spORtify.data.entity.Opinion;
 import com.spORtify.web.dto.OpinionDto;
 import com.spORtify.web.service.opinion.OpinionService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,13 @@ public class OpinionController {
     private OpinionService opinionService;
 
     @PostMapping(CREATE_OPINION_FOR_USER_PATH)
-    public void createOpinionForUser(@RequestBody OpinionDto opinionDto){
-        opinionService.createOpinionForUser(opinionDto);
+    public ResponseEntity<String> createOpinionForUser(@RequestBody OpinionDto opinionDto){
+        try {
+            opinionService.createOpinionForUser(opinionDto);
+            return ResponseEntity.status(HttpStatus.OK).body("opinion created");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Could not create opinion");
+        }
     }
 
     @GetMapping(OPINIONS_PATH + "/{id}")
