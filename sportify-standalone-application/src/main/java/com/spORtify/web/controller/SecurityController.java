@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 import static com.spORtify.web.utilities.Constants.*;
 
 @RestController(AUTHORIZATION_PATH)
@@ -19,8 +21,13 @@ public class SecurityController {
     private UserSecurityService userSecurityService;
 
     @PostMapping(LOGIN_PATH)
-    public String login(@RequestBody LoginDto loginDto) {
-        return userSecurityService.loginUser(loginDto);
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+        try {
+            userSecurityService.loginUser(loginDto);
+            return ResponseEntity.status(HttpStatus.OK).body("logged");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Could not create user!");
+        }
     }
 
     @PostMapping(REGISTRATION_SAVE_PATH)

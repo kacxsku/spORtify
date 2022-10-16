@@ -4,14 +4,22 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>spORtify</artifactId>
-		<groupId>com.spORtify</groupId>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.3</version>
+		<relativePath/>
 	</parent>
 
 	<artifactId>spORtify-standalone-application</artifactId>
 	<groupId>cop.sporify.standalone</groupId>
 	<packaging>jar</packaging>
+	<version>1.0.1</version>
+
+	<properties>
+		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
 
 	<dependencies>
 		<dependency>
