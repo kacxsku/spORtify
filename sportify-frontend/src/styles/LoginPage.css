@@ -1,0 +1,69 @@
+.LoginToolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.LoginToolbar .LoginButtons {
+    margin-left: auto;
+}
+
+
+.loginButton {
+    margin-left: 18rem;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    font-weight: 500;
+    line-height: 1.75;
+    border-radius: 4px;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.eye-catcher {
+    width: 43em;
+    height: 45em;
+    margin: 0;
+    margin-top: 1.5em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.LoginForm{
+    border-width: 0.5px;
+    border-style:solid;
+    border-color:black;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: 0.5em;
+    background-color:white;
+    width: 14em;
+    height: 11em;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.LoginForm > p {
+    color: rgb(85, 85, 85);
+}
+
+.ForgetPassword {
+    font-size: 0.7em;
+    padding: 0.3em;
+    margin: 0.7em auto 0.1em auto;
+}

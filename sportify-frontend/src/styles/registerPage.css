@@ -1,0 +1,23 @@
+
+.RegistrationForm {
+    display: flex;
+    flex-direction: column;
+    width: 39em;
+    height: 35em;
+    margin-top: 8em;
+    margin-left: 10em;
+    border-width: 0.5px;
+    border-style:solid;
+    border-color:black;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 0.5em 1.5em;
+}
+
+.GenderForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+}
+
