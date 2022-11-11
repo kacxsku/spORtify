@@ -25,6 +25,8 @@ const AppHeader = () =>{
     const applicationLogo = (
         <Typography variant="h6" component="h1">
             spORtify
+            {/* <img src="images/logo.svg" alt="logo"/> */}
+
         </Typography>
     )
     const getLoginPageButtons = () => {

@@ -44,11 +44,12 @@ const Menu = () => {
                 </li>
                 <Button style={{
                     marginTop: "auto",
-                    width: "22em",
+                    width: "17 em",
                     height: "4em",
                     background: "#A8B6FF",
                     borderRadius: "30px",
-                    }}>Add Announcement</Button>
+                    }}
+                    onClick={() => handlePageChange("/add/activity")}>Add Announcement</Button>
 
             </ul> 
         )

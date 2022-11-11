@@ -1,5 +1,5 @@
 
-import { Button } from "@material-ui/core";
+import { Button, IconButton } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 
 const RegisterButton = ({style, href}) =>{
@@ -18,4 +18,19 @@ const RegisterButton = ({style, href}) =>{
     )
 }
 
-export {RegisterButton}
+const RoundedIconButton = ({id ,Icon}) => {
+    return (
+        <div>
+        <IconButton  variant="contained"  {...{
+            id: id,
+            size: "medium",
+            color: "inherit"
+            } } 
+            >
+            <Icon fontSize="medium"/>
+        </IconButton>
+        </div>
+    )
+}
+
+export {RegisterButton, RoundedIconButton}

@@ -8,6 +8,7 @@ import { Activities } from "./pages/Activities";
 import { Notifications } from "./pages/Notifications";
 import { Profile } from "./pages/Profile";
 import { Settings } from "./pages/Settings";
+import { AddActivity } from "./pages/AddActivity";
 import { Home } from "./pages/Home";
 
 export const userContext = createContext();
@@ -43,6 +44,7 @@ function App() {
           <Route path="/notifications"  element={<Notifications />}/>
           <Route path="/profile"  element={<Profile />}/>
           <Route path="/settings"  element={<Settings />}/>
+          <Route path="/add/activity"  element={<AddActivity />}/>
       </Routes>
     </userContext.Provider>
   )

@@ -4,7 +4,7 @@ import '../styles/LoginPage.css'
 import '../styles/common.css'
 import '../styles/registerPage.css'
 import {AppHeader} from '../components/Header'
-import {RegisterButton} from '../components/RegisterButton'
+import {RegisterButton} from '../components/Buttons'
 import { FormTextField, FormPasswordField, MulitlineFormTextField } from "../components/FormTextFields";
 
 const RegisterPage = () => {

@@ -1,0 +1,28 @@
+
+.content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.SearchAnnouncementList{
+    display: flex;
+    flex-direction: column;
+    margin: 3em auto auto auto;
+    justify-content: center;
+}
+
+.NameDateSearchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

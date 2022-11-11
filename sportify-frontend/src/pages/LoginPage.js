@@ -2,7 +2,7 @@ import {React} from "react";
 import '../styles/LoginPage.css'
 import '../styles/common.css'
 import {AppHeader} from '../components/Header'
-import {RegisterButton} from '../components/RegisterButton'
+import {RegisterButton} from '../components/Buttons'
 
 const LoginPage = () => {
     return (  
