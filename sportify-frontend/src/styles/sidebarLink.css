@@ -3,7 +3,6 @@
     align-items: cover;
     cursor: pointer;
     align-items: center;
-    margin-top: 1em;
   }
 
   .link:hover{
@@ -21,3 +20,7 @@
   .link > .MuiSvgIcon-root {
     padding: 0.5em;
   }
+
+.menu > li {
+  margin-top: 0.8em;
+}

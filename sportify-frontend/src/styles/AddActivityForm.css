@@ -1,0 +1,26 @@
+.NewActivityForm{
+    display: flex;
+    flex-direction: row;
+}
+
+.ActivityData {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5em;
+    padding: 1em;
+}
+
+.ActivityPrimaryData{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.ActivityDescription{
+    width: 50em;
+}
+
+.AddActivityFormButtons{
+    margin-top: auto ;
+}

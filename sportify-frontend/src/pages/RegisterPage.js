@@ -48,7 +48,7 @@ const RegisterPage = () => {
                         </Grid>
                     </Grid>
                     <FormTextField id="RegisterFormCityTextField" label = "city" />                    
-                    <MulitlineFormTextField id="MulitlineFormTextField" label = "write something about You" />
+                    <MulitlineFormTextField rows="4" id="MulitlineFormTextField" label = "write something about You" />
                     <RegisterButton style={{marginTop: "1.5em"}} href="/home"/>
                 </form>
             </div>

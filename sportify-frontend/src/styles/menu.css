@@ -14,7 +14,8 @@
 }
 
 .menu>li:last-child{
-  margin: auto;
+  margin-right: auto ;
+  margin-top: auto;
 }
 
 .MenuUserData{
@@ -34,12 +35,38 @@
 
 .avatar{
   border-radius: 50%;
-  width: 6.5em;
+  width: 6em;
 }
 
 .content{
   width: 80%;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.RightPageContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.5em;
+}
+
+.CardData {
+  display: flex;
+  flex-direction: row;
+  width: 14em;
+  height: 6em;
+  padding: 1em;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.UserData {
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  margin-right: 1em ;
 }

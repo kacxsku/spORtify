@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { ListItem } from "@mui/material";
-
+import '../styles/common.css'
 
 const Announcement = () => {
  

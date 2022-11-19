@@ -14,13 +14,7 @@ body, html {
     height: 100%;
 }
 
-.PageContent {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
+
 
 .PageCenter {
   display: flex;
@@ -56,3 +50,29 @@ body, html {
   line-height: 2.4;
 }
 
+.PageContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.AdditionalData {
+  display: flex;
+  flex-direction: column;
+}
+
+.AdditionalData a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: lighter;
+}
+ 

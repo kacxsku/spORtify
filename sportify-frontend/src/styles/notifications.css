@@ -1,0 +1,26 @@
+
+.NotificationsContainer {
+    width: 20em;
+    height: 100%;
+}
+
+.NotificationsList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50em;
+    height: 100%;
+    margin-top: 5em;
+}
+
+.NotificationsListItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.NotificationsContent {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}

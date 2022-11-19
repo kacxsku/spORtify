@@ -5,7 +5,6 @@ const FormTextField = ({...props}) => {
     return (
         <TextField
         required
-        
         {...{
         id: props.id,
         label: props.label,
@@ -43,15 +42,15 @@ const MulitlineFormTextField = ({...props}) => {
         <TextField
         required
         multiline
-        rows={4}
         {...{
+        minRows: props.rows,
         id: props.id,
         label: props.label,
-        placeholder: props.placeholder
-        }}
-        style={{
+        placeholder: props.placeholder,
+        style: {
             marginTop: "0.3em",
-            padding: "0.4em"
+            padding: "0.4em", 
+        }
         }}
         />
     )

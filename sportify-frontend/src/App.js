@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, useParams} from 'react-router-dom'
 import { createContext } from 'react';
 import  {useState} from "react";
 import { LoginPage } from './pages/LoginPage';
@@ -8,10 +8,18 @@ import { Activities } from "./pages/Activities";
 import { Notifications } from "./pages/Notifications";
 import { Profile } from "./pages/Profile";
 import { Settings } from "./pages/Settings";
-import { AddActivity } from "./pages/AddActivity";
 import { Home } from "./pages/Home";
+import {Activity} from './pages/Activity'
+import {EditActivity} from './pages/EditActivity'
 
 export const userContext = createContext();
+
+
+function Announcement() {
+  const params = useParams();
+
+  return <Activity />;
+}
 
 function App() {
   
@@ -44,7 +52,8 @@ function App() {
           <Route path="/notifications"  element={<Notifications />}/>
           <Route path="/profile"  element={<Profile />}/>
           <Route path="/settings"  element={<Settings />}/>
-          <Route path="/add/activity"  element={<AddActivity />}/>
+          <Route path="/activity/:id" element={<Announcement />} />
+          <Route path="/activity/:id/edit" element={<EditActivity />} />
       </Routes>
     </userContext.Provider>
   )
