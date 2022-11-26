@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {SidebarLink} from '../components/SidebarLink'
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -15,9 +15,23 @@ import { Button} from "@material-ui/core";
 import '../styles/menu.css'
 import logo from '../assets/logo.png' 
 import { Badge } from "@mui/material";
+import {timer, sendEmail, sendPush} from "../notifications/sendNotification"
 
 
 const Menu = () => {
+
+    // useEffect( () => {
+        setInterval(() => {
+            //pobierz dane z bazki i ustaw w tablicy  mail: data
+            //stworzyc tablice z powiadomieniami w stylu "user,title, message, icon"
+            var time = timer("2022-10-26 19:25")
+            if(time){
+                sendEmail();
+                console.log("email sended");
+              }
+        }, 1000)
+    // })
+
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const [invisible, setInvisible] = useState(false);
@@ -69,7 +83,7 @@ const Menu = () => {
                 <li onClick={() => handlePageChange("/profile")}>
                     <SidebarLink text="Profile" Icon={AccountBoxIcon}  />
                 </li>
-                <li onClick={() => handlePageChange("/settings")}>
+                <li onClick={() => handlePageChange("/chat")}>
                     <SidebarLink text="Messages" Icon={SendIcon}/>
                 </li>
                 <li>

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Button, IconButton } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
+import {sendEmail} from "../notifications/sendNotification"
 
 const RegisterButton = ({style, href}) =>{
     console.log(href)

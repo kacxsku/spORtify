@@ -11,6 +11,7 @@ import { Settings } from "./pages/Settings";
 import { Home } from "./pages/Home";
 import {Activity} from './pages/Activity'
 import {EditActivity} from './pages/EditActivity'
+import {Chat} from './components/ChatRoom'
 
 export const userContext = createContext();
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/settings"  element={<Settings />}/>
           <Route path="/activity/:id" element={<Announcement />} />
           <Route path="/activity/:id/edit" element={<EditActivity />} />
+          <Route path="/chat" element={<Chat />} />
       </Routes>
     </userContext.Provider>
   )

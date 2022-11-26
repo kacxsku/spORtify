@@ -1,0 +1,62 @@
+.map-container {
+    height: 9em;
+    width: 15em;
+}
+
+.mapView {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 9em;
+    width: 15em;
+}
+    
+.sidebar {
+    background-color: rgba(35, 55, 75, 0.9);
+    opacity: 0.9;
+    color: #fff;
+    padding: 3px 3px;
+    font-family: monospace;
+    font-size: 8px;
+    z-index: 1;
+    position: absolute;
+    margin: 0 ;
+    border-radius: 4px;
+}
+
+.mapboxgl-ctrl-attrib-inner{
+    display: none;
+}
+
+.mapboxgl-ctrl-bottom-right{
+    display: none;
+}
+
+.mapboxgl-ctrl-bottom-left{
+    display: none;
+}
+
+
+.map-container{
+    height: 9em;
+    width: 15em;
+}
+
+.mapboxgl-map{
+    height: 9em;
+    width: 15em;
+}
+
+.mapboxgl-canvas {
+    height: 9em;
+    width: 15em;
+}
+.map-container.mapboxgl-map{
+    height: 9em;
+    width: 15em;
+}
+
+.mapboxgl-canvas-container {
+    height: 9em;
+    width: 15em;
+}

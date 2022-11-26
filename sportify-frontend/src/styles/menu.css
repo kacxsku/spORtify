@@ -50,14 +50,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 2.5em;
+  margin: 2em;
 }
 
 .CardData {
   display: flex;
   flex-direction: row;
-  width: 14em;
-  height: 6em;
+  width: 11em;
+  height: 5.5em;
   padding: 1em;
   justify-content: space-around;
   align-items: center;
@@ -69,4 +69,8 @@
   justify-content: space-around;
   align-items: center;
   margin-right: 1em ;
+}
+
+.ActivitiesList {
+  margin-left: 4em;
 }

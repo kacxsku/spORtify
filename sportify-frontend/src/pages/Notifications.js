@@ -21,11 +21,7 @@ const Notifications = () => {
                         height: "5em",
                         padding: "0.5em"
                     }}>
-                    <GradeIcon fontSize='large' sx={{marginRight: "0.5em"}}/> 
-                    {/* <AccessibilityNewIcon fontSize='large'/> */}
-                    {/* <ScheduleIcon fontSize='large' /> */}
-                    {/* <CalendarTodayIcon fontSize='large' /> */}
-
+                    <CalendarTodayIcon fontSize='large' />
                     <ListItemText
                         primary="Brunch this weekend?"
                         secondary={
@@ -39,11 +35,11 @@ const Notifications = () => {
                                     Ali Connors
                                 </Typography>
                             {" — I'll be in your neighborhood doing errands this…"}
-                            {/* <Divider variant='inset' coponent='li' width="100%" /> */}
                             </Fragment>
                         }
                     />
                     </ListItem>
+                    
                 </List>
             </div>    
             <RightPageContent />

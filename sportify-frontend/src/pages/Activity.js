@@ -11,6 +11,8 @@ import AppsIcon from '@mui/icons-material/Apps';
 import EditIcon from '@mui/icons-material/Edit';
 import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { MapView } from '../mapbox/map';
+
 
 function stringToColor(string) {
     let hash = 0;
@@ -64,12 +66,14 @@ const Activity = () => {
         <div className="PageContent">
             <Menu />
             <div className="content">
-                    <Paper className='ActivityDetails' elevation={5} style={{padding: "1.5em"}}>
-                        <Typography variant="h6" gutterBottom p={1}>
-                            Titlef
-                        </Typography>
-                        <div >
-                            {/* mapa */}
+                    <Paper className='ActivityDetails' elevation={5} style={{padding: "1.5em", overflow: "hidden"}}>
+                        <div className="TitleMap" >
+                          <Typography variant="h6" gutterBottom p={1} height="1em" >
+                              Titlef
+                          </Typography>
+                          <Box sx={{marginLeft: "22em"}}>
+                            <MapView />
+                          </Box>
                         </div>
                         <Typography pb={2} pl={1} width={"24em"}>
                             Content Content Content Content Content Content Content Content Content Content Content Content
@@ -84,27 +88,34 @@ const Activity = () => {
                                 <Rating name="activityRate" onChange={handleRateChange} />
                         </Box>
                         <Typography pl={1} mb={"1em"} variant="h6" >Participant:</Typography>
-                        <Box className='ParticipantDetails'>
-                            <Avatar {...stringAvatar('Kent Dodds')} />
-                            <Typography variant="h5" pl={1} mr={"1em"}>Kent Dodds</Typography>
-                            <Rating name="ParticipantRate" onChange={handleRateChange} />
-                        </Box>
-                        <SpeedDial className='ActivitiesActionDial'     
-                            ariaLabel="SpeedDial controlled open example"
-                            icon={<AppsIcon />}
-                            onClose={handleClose}
-                            onOpen={handleOpen}
-                            open={open}
-                            >
-                            {actions.map((action) => (
-                                    <SpeedDialAction
-                                        key={action.name}
-                                        icon={action.icon}
-                                        tooltipTitle={action.name}
-                                        onClick={() => handleClick(action.url)}
-                                    />
-                                    ))}
-                        </SpeedDial>
+                        <div className='holder'>
+                          <Box className='ParticipantDetails' >
+                              <Avatar {...stringAvatar('Kent Dodds')} />
+                              <Typography variant="h5" pl={1} mr={"1em"}>Kent Dodds</Typography>
+                              <Rating name="ParticipantRate" onChange={handleRateChange} />
+                          </Box>
+                          <SpeedDial className='ActivitiesActionDial'     
+                              ariaLabel="SpeedDial controlled open example"
+                              icon={<AppsIcon />}
+                              onClose={handleClose}
+                              onOpen={handleOpen}
+                              open={open}
+                              sx={{
+                                marginLeft: "15em",
+                                marginTop: "-11em",
+                            }}
+                              >
+                              {actions.map((action) => (
+                                      <SpeedDialAction 
+
+                                          key={action.name}
+                                          icon={action.icon}
+                                          tooltipTitle={action.name}
+                                          onClick={() => handleClick(action.url)}
+                                      />
+                                      ))}
+                          </SpeedDial>
+                        </div>
                     </Paper>
             </div>
             <RightPageContent />

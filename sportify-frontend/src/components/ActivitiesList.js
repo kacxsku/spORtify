@@ -28,9 +28,9 @@ const ActivitiesList = () => {
   }
 
   return(
-    <div onClick={() => HandleActivityCLick("/activity/".concat("1"))}>
+    <div sx={{marginRight: "auto"}} onClick={() => HandleActivityCLick("/activity/".concat("1"))}>
       <Box sx={{ width: '45em', height: 600, bgcolor: 'background.paper' }}>
-              <FixedSizeList
+              <FixedSizeList className="ActivitiesList"
                   width={"45em"}
                   height={600}
                   itemSize={100}

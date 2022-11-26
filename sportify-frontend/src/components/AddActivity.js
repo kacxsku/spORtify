@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import MapIcon from '@mui/icons-material/Map';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import { TimePicker } from '@mui/x-date-pickers';
 import '../styles/AddActivityForm.css'
 
 const AddActivityModal = () => {
@@ -15,6 +16,11 @@ const AddActivityModal = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const handleSave = () => {
+        console.log("close")
+        setOpen(false);
+    } 
 
     return (
         <div>
@@ -30,7 +36,7 @@ const AddActivityModal = () => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
-                    <ActivityForm ref={ref} />
+                    <ActivityForm ref={ref} onSave={handleSave} onClose={handleClose} />
             </Modal>
         </div>
     )
@@ -38,15 +44,6 @@ const AddActivityModal = () => {
 
 
 const ActivityForm = forwardRef((props, ref)=> {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const handleSave = () => {
-        console.log("close")
-        setOpen(false);
-    } 
-    
     return (
         <Box 
         {...props}
@@ -75,8 +72,8 @@ const ActivityForm = forwardRef((props, ref)=> {
                         <MulitlineFormTextField  rows="15" id="MulitlineFormTextField" label = "Write activity description" />
                     </div>
                     <div className="AddActivityFormButtons">
-                        <Button onClick={() => handleSave()}>Save</Button>
-                        <Button onClick={() => handleClose()}>Cancel</Button>
+                        <Button onClick={props.onSave}>Save</Button>
+                        <Button onClick={props.onClose}>Cancel</Button>
                     </div>
                 </div>
         </Box>
