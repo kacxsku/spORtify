@@ -1,6 +1,6 @@
 package com.spORtify.web.controller;
 
-import com.spORtify.web.dto.LoginDto;
+import com.spORtify.web.dto.JwtRequestModel;
 import com.spORtify.web.dto.UserDto;
 import com.spORtify.web.service.security.UserSecurityService;
 import lombok.AllArgsConstructor;
@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletResponse;
 
 import static com.spORtify.web.utilities.Constants.*;
 
@@ -21,10 +19,10 @@ public class SecurityController {
     private UserSecurityService userSecurityService;
 
     @PostMapping(LOGIN_PATH)
-    public ResponseEntity<?> login(@RequestBody LoginDto loginDto, HttpServletResponse response) {
+    public ResponseEntity<String> login(@RequestBody JwtRequestModel request) {
         try {
-            userSecurityService.loginUser(loginDto);
-            return ResponseEntity.status(HttpStatus.OK).body("logged");
+            var response = userSecurityService.loginUser(request);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Could not create user!");
         }
@@ -41,9 +39,9 @@ public class SecurityController {
     }
 
     @PostMapping(LOGIN_CHANGE_PASSWORD_PATH)
-    public ResponseEntity<String> changePassword(@RequestBody LoginDto loginDto){
+    public ResponseEntity<String> changePassword(@RequestBody JwtRequestModel jwtRequestModel){
         try {
-            userSecurityService.updateUserPassword(loginDto);
+            userSecurityService.updateUserPassword(jwtRequestModel);
             return ResponseEntity.status(HttpStatus.OK).body("user created");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Could not create user!");
