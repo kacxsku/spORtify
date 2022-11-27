@@ -17,7 +17,7 @@ public class UserAnnouncementController {
 
     private UserAnnouncementService userAnnouncementService;
 
-    @PostMapping(ANNOUNCEMENTS_PATH + "/{creatorId}")
+    @PostMapping(ANNOUNCEMENTS_PATH + "/user"  + "/{creatorId}")
     public List<Announcement> getAllAnnouncementsForCreator(@PathVariable String creatorId){
         return userAnnouncementService.getAllAnnouncementsForCreator(creatorId);
     }

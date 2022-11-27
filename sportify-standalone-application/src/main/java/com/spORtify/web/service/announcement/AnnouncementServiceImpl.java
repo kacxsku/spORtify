@@ -6,12 +6,14 @@ import com.spORtify.data.repository.CoordinateRepository;
 import com.spORtify.data.repository.UserRepository;
 import com.spORtify.web.dto.AnnouncementDto;
 import com.spORtify.web.utilities.mapper.AnnouncementDtoMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
+@AllArgsConstructor
  public class AnnouncementServiceImpl implements AnnouncementService{
 
     private AnnouncementRepository announcementRepository;
@@ -55,6 +57,12 @@ import java.util.List;
 
         announcement.setParticipant(participant);
         announcementRepository.save(announcement);
+    }
+
+    @Override
+    public Announcement getAnnouncement(String announcementId) {
+        var id = Long.parseLong(announcementId);
+        return announcementRepository.getAnnouncementByAnnouncementId(id);
     }
 
 

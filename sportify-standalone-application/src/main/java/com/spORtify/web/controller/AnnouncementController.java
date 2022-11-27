@@ -26,6 +26,13 @@ public class AnnouncementController {
         }
     }
 
+    @GetMapping(ANNOUNCEMENT_PATH + "/{announcementId}")
+    public ResponseEntity<Announcement> getAnnouncement(@PathVariable String announcementId){
+            var announcement = announcementService.getAnnouncement(announcementId);
+            return ResponseEntity.status(HttpStatus.CREATED).body(announcement);
+
+    }
+
     @DeleteMapping(ANNOUNCEMENT_PATH + "/delete/{id}")
     public ResponseEntity<String> deleteAnnouncement(@PathVariable String id){
         try {

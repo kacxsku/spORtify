@@ -17,4 +17,5 @@ public interface AnnouncementService {
 
     void assignParticipantToAnnouncement(String announcementId,String userId);
 
+    Announcement getAnnouncement(String announcementId);
 }

@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserSecurityServiceImpl implements UserSecurityService{
 
     private AuthenticationManager authenticationManager;
+//    private UserSecurityRepository userSecurityRepository;
     private UserRepository userRepository;
     private UserDtoMapper userDtoMapper;
     private JwtTokenManager tokenManager;
@@ -34,12 +34,9 @@ public class UserSecurityServiceImpl implements UserSecurityService{
     @Override
     public String loginUser(JwtRequestModel jwtRequestModel) {
         try{
-            var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     jwtRequestModel.getEmail(), jwtRequestModel.getPassword()
             ));
-            SecurityContextHolder
-                    .getContext()
-                    .setAuthentication(authentication);
         } catch (AuthenticationException e){
             return "User with this credentials does not exists";
         }

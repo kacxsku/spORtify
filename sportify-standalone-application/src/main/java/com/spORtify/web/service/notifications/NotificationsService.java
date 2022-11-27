@@ -10,4 +10,5 @@ public interface NotificationsService {
     List<Notification> getAllUserNotifications(String userId);
 
     Notification createNotification(NotificationDto notificationDto);
+
 }

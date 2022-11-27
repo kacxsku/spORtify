@@ -28,4 +28,5 @@ public class NotificationsServiceImpl implements NotificationsService{
     public Notification createNotification(NotificationDto notificationDto) {
         return notificationDtoMapper.mapDto(notificationDto);
     }
+
 }

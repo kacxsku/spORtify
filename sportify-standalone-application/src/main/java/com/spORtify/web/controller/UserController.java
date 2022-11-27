@@ -44,7 +44,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(USER_CHANGE_DESCRIPTION_PATH + "/{id}")
+    @PutMapping(USER_CHANGE_DESCRIPTION_PATH + "/{id}")
     public ResponseEntity<String> changeDescription(@PathVariable String id, @RequestParam String description) {
         try{
             userService.changeDescription(id, description);

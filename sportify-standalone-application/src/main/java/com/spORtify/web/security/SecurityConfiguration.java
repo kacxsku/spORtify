@@ -1,5 +1,6 @@
 package com.spORtify.web.security;
 
+import com.spORtify.web.security.filter.JwtTokenFilter;
 import com.spORtify.web.service.user.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,9 +9,11 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
@@ -18,10 +21,14 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfiguration  {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private JwtTokenFilter jwtTokenFilter;
+
     @Bean
     public static BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -49,29 +56,22 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         return security
                 .authorizeRequests()
-//                .antMatchers(BASE_PATH, HOME_PATH, REGISTRATION_PATH, LOGIN_PATH, LOGIN_CHANGE_PASSWORD_PATH).permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/","/register","/login").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()
-//                .loginPage(LOGIN_PATH)
-                .permitAll()
+                .exceptionHandling()
                 .and()
-//                .loginProcessingUrl(LOGIN_PATH + "/process")
-//                .defaultSuccessUrl(USER_PATH)
-//                .failureUrl(LOGIN_PATH +"?error=true")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/logout" + "/process")
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID")
-//                .permitAll()
-//                .and()
-//                .csrf()
-//                .disable()
-//                .cors()
-//                .disable()
+                .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .logout()
+                    .logoutSuccessUrl("/logout" + "/process")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .and()
+                .csrf().disable()
+                .cors().disable()
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

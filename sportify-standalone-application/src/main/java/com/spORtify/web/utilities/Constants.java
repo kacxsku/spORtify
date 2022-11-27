@@ -28,7 +28,8 @@ public class Constants {
     //notifications
     public static final String NOTIFICATIONS_PATH = "/notifications";
     public static final String ALL_NOTIFICATIONS_PATH = NOTIFICATIONS_PATH + "/all";
-    public static final String REMINDER_NOTIFICATION_PATH = NOTIFICATIONS_PATH + "/reminder";
+    public static final String CREATE_NOTIFICATION_PATH = NOTIFICATIONS_PATH + "/create";
+    public static final String DELETE_NOTIFICATION_PATH = NOTIFICATIONS_PATH + "/delete";
 
     //opinion
     public static final String OPINION_PATH = "/opinion";

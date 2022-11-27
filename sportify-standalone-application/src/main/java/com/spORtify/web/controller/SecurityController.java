@@ -28,7 +28,7 @@ public class SecurityController {
         }
     }
 
-    @PostMapping(REGISTRATION_SAVE_PATH)
+    @PostMapping(REGISTRATION_PATH)
     public ResponseEntity<String> registerUser(@RequestBody UserDto userDto){
         try {
             userSecurityService.createUser(userDto);
