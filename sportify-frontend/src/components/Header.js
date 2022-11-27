@@ -57,7 +57,7 @@ const AppHeader = () =>{
         <AppBar className="LoginPageHeader" style={{      backgroundColor: 'transparent', boxShadow: 'none',}}>
             <Toolbar className="LoginToolbar" style={{
                 backgroundColor: "#758BFD"
-            }}>
+                }}>
                 {applicationLogo}
                 <div className="LoginButtons">
                     {getLoginPageButtons()}

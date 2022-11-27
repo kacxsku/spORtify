@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import '../styles/common.css'
 import { MapView } from '../mapbox/map';
 
-
 const Announcement = () => {
 
     return (

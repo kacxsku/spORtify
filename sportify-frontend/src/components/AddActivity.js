@@ -1,14 +1,14 @@
 import React, {useState, useRef, forwardRef} from "react";
 import { Button, IconButton } from "@material-ui/core";
 import { FormTextField,  MulitlineFormTextField } from "../components/FormTextFields";
-import {Slide, Tooltip} from '@mui/material';
+import { TextField } from "@material-ui/core";
 import { Calendar } from '../components/Calendar';
 import { ActivititesFilters } from "./Filters";
 import AddIcon from '@mui/icons-material/Add';
 import MapIcon from '@mui/icons-material/Map';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { TimePicker } from '@mui/x-date-pickers';
+import {MapFinder} from '../mapbox/map';
 import '../styles/AddActivityForm.css'
 
 const AddActivityModal = () => {
@@ -42,18 +42,29 @@ const AddActivityModal = () => {
     )
 }
 
+const ActivityPrimaryData = () => {
+    return (
+        <div className="ActivityPrimaryData">
+        <FormTextField id="AddActivityTitleField" label = "Activity title" />
+        <Calendar />
+        <MapFinder />
+    </div>
+    )
+}
 
 const ActivityForm = forwardRef((props, ref)=> {
+
     return (
         <Box 
         {...props}
         ref={ref} 
+        className="ActivityFormBox"
         sx={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 700,
+            width: 820,
             height: 500,
             bgcolor: 'background.paper',
             border: '1px solid #000',
@@ -62,14 +73,17 @@ const ActivityForm = forwardRef((props, ref)=> {
                 <div className="NewActivityForm">
                     <ActivititesFilters sx={{margin:0}}/>
                     <div className="ActivityData" sx={{padding: "1em"}}>
-                        <div className="ActivityPrimaryData">
-                            <FormTextField id="AddActivityTitleField" label = "Activity title" />
-                            <Calendar />
-                            <IconButton aria-label="map" id="mapButton">
-                                <MapIcon />
-                            </IconButton>
-                        </div>
-                        <MulitlineFormTextField  rows="15" id="MulitlineFormTextField" label = "Write activity description" />
+                        <ActivityPrimaryData />
+                        <TextField required multiline {...{
+                            minRows: 14,
+                            id: "MulitlineFormTextField",
+                            label: "Write activity description",
+                            style: {
+                                width: "30em",
+                                marginTop: "1em",
+                                marginLeft: "1em",
+                                padding: "0.4em", 
+                            }}}/>
                     </div>
                     <div className="AddActivityFormButtons">
                         <Button onClick={props.onSave}>Save</Button>
