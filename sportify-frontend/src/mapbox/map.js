@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import '../styles/map.css'
 import Map from "react-map-gl";
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import DeckGL, { GeoJsonLayer } from "deck.gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -20,11 +20,20 @@ const MapView = () => {
 
     useEffect(() => {
         if (map.current) return; 
+
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
+            viewState: {
+                width: "2em",
+                height: "5em"
+            },
             center: [longitude, latitude],
             zoom: zoom,
+        });
+
+        map.current.on('load', function () {
+            map.resize();
         });
 
         new mapboxgl.Marker({
@@ -36,6 +45,7 @@ const MapView = () => {
 
     useEffect(() => {
         if (!map.current) return;
+
         map.current.on('move', () => {
             setLng(map.current.getCenter().lng.toFixed(4));
             setLat(map.current.getCenter().lat.toFixed(4));

@@ -18,7 +18,7 @@ const RightPageContent = () =>{
                         </div>
                         <div className="AdditionalData" >
                             <a href='https://www.spotify.com/' target="_blank" rel='noreferrer'>Spotify</a>
-                            <a href='https://www.kartamultisport.pl/' target="_blank" rel='noreferrer'>Mulisport</a>
+                            <a href='https://www.kartamultisport.pl/' target="_blank" rel='noreferrer'>Multisport</a>
                         </div>
                     </div>
                 </Card>
