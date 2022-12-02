@@ -30,6 +30,4 @@ public class OpinionServiceImpl implements OpinionService{
         user.getOpinions().add(opinion);
         userRepository.save(user);
     }
-
-
 }

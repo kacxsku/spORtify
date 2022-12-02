@@ -14,7 +14,6 @@ import java.util.List;
 public class NotificationsServiceImpl implements NotificationsService{
 
     private NotificationRepository notificationRepository;
-
     private NotificationDtoMapper notificationDtoMapper;
 
     @Override
@@ -28,4 +27,5 @@ public class NotificationsServiceImpl implements NotificationsService{
     public Notification createNotification(NotificationDto notificationDto) {
         return notificationDtoMapper.mapDto(notificationDto);
     }
+
 }

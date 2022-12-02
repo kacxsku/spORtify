@@ -50,6 +50,4 @@ public class AnnouncementController {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Could not assign");
         }
     }
-
-
 }

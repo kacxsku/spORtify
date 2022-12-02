@@ -1,4 +1,4 @@
-package com.spORtify.web.security;
+package com.spORtify.web.security.configuration;
 
 import com.spORtify.web.service.user.UserService;
 import org.springframework.context.annotation.Bean;
@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
 //                .antMatchers(BASE_PATH, HOME_PATH, REGISTRATION_PATH, LOGIN_PATH, LOGIN_CHANGE_PASSWORD_PATH).permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
 //                .loginPage(LOGIN_PATH)

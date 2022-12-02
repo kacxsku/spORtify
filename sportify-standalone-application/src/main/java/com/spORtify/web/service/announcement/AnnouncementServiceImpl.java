@@ -59,6 +59,12 @@ public class AnnouncementServiceImpl implements AnnouncementService{
         announcementRepository.save(announcement);
     }
 
+    @Override
+    public Announcement getAnnouncement(String announcementId) {
+        var id = Long.parseLong(announcementId);
+        return announcementRepository.getAnnouncementByAnnouncementId(id);
+    }
+
 
     private Announcement updateAnnouncement(Long  announcementId, Announcement newAnnouncement){
         var announcementToUpdate = announcementRepository.getAnnouncementByAnnouncementId(announcementId);

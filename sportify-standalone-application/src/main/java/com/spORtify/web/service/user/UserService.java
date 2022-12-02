@@ -19,7 +19,6 @@ public interface UserService extends UserDetailsService {
 
     String updatePrivateData(UserDto userDto,String id);
 
-
     void uploadPhoto(MultipartFile file, String id) throws IOException;
 
     void changeDescription(String id, String description);
