@@ -18,6 +18,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "audio-react-recorder": "^1.0.4",
+    "axios": "^1.2.0",
+    "cors": "^2.8.5",
     "dayjs": "^1.11.6",
     "deck.gl": "^8.8.20",
     "firebase": "^9.14.0",

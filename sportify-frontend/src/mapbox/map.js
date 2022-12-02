@@ -32,9 +32,9 @@ const MapView = () => {
             zoom: zoom,
         });
 
-        map.current.on('load', function () {
-            map.resize();
-        });
+        // map.current.on('load', function () {
+        //     map.resize();
+        // });
 
         new mapboxgl.Marker({
             color: "#ff1500",
@@ -121,10 +121,7 @@ export function MapFinder(){
 
     return (
         <div id="map">
-            <div className="sidebar">
-
-            </div>
-            <div ref={mapContainer} className="map-container" />
+            <div ref={mapContainer} className="map-search-container" />
         </div>
     )
 }

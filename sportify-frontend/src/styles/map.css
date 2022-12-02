@@ -41,3 +41,32 @@
     height: 500px;
     width: 300px;
 }
+
+.map-search-container {
+    height: 170px;
+    width: 240px;
+}
+
+
+.mapboxgl-ctrl-top-left{
+    display: none;
+}
+
+.mapboxgl-ctrl-top-right{
+    width: 200px;
+    max-width: 200px;
+}
+.mapboxgl-ctrl-geocoder{
+    width: 200px;
+    max-width: 200px;
+}
+
+.mapboxgl-ctrl-geocoder--input{
+    width: 200px;
+    max-width: 200px;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    margin: 10px!important;
+    float: none;
+}

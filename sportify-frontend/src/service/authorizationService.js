@@ -2,7 +2,7 @@ import axios from 'axios'
 const baseUrl = 'http://localhost:8080/authorization'
 
 
-const LogIn = () => {
+const login = () => {
     const request = axios.post(`${baseUrl}/login`);
     return request.then(response => response.data);
 }
@@ -17,3 +17,4 @@ const registerUser = () => {
     return request.then(response => response.data);
 }
 
+export { login, changePassword, registerUser };

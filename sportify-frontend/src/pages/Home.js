@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import { Menu } from '../components/Menu';
 import {RightPageContent} from '../components/RightPageContent'
@@ -9,8 +9,21 @@ import '../styles/home.css'
 import '../styles/common.css'
 import TextField from '@mui/material/TextField';
 import { ActivitiesList } from "../components/ActivitiesList";
+import announcementsService from '../service/announcementsService'
 
 const Home = () => {
+    const [announcements, setAnnouncements] = useState([]);
+
+    useEffect(() => {
+        announcementsService.getAllAnnouncements()
+        .then(announcements => {
+            setAnnouncements(announcements);
+            console.log("get all announcement operation successfully finish", announcements);
+        }).catch(error => {
+            console.log("unable to get all announcements",error)
+        })
+        
+    }, []);
     
     const SearchInput = () => {
         return (
@@ -33,7 +46,7 @@ const Home = () => {
                 <ActivititesFilters />
                 <div className="SearchAnnouncementList">
                     <SearchInput />
-                    <ActivitiesList />
+                    <ActivitiesList data={announcements} />
                 </div>
             </div>
             <RightPageContent />

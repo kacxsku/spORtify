@@ -2,9 +2,11 @@ import axios from 'axios'
 const baseUrl = 'http://localhost:8080/announcements'
 
 
-const getAllAnnouncements = () => {
+const getAllAnnouncements = async () => {
     const request = axios.post(`${baseUrl}`);
-    return request.then(response => response.data);
+    const response = await request
+    // return request.then(response => response.data);
+    return response.data
 }
 
 const getAllAnnouncementsCreatedByUser = (id) => {
@@ -12,7 +14,11 @@ const getAllAnnouncementsCreatedByUser = (id) => {
     return request.then(response => response.data);
 }
 
-const getAllAnnouncementsForParticipant = (participantId) => {
+const getAllAnnouncementsForParticipant = async (participantId) => {
     const request = axios.post(`${baseUrl}/user/participant/${participantId}`);
-    return request.then(response => response.data);
+    const response = await request
+
+    return response.data
 }
+
+export default {getAllAnnouncements, getAllAnnouncementsCreatedByUser, getAllAnnouncementsForParticipant};

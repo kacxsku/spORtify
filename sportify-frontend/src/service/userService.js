@@ -17,3 +17,5 @@ const getUserData = (id) => {
     const request = axios.get(`${baseUrl}/${id}`);
     return request.then(response => response.data);
 }
+
+export {updateUserDescription, updateUserPrivateData, getUserData};

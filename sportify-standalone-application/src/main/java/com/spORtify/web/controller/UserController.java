@@ -21,6 +21,7 @@ public class UserController {
 
     @GetMapping(USER_PATH + "/{id}")
     public User getUserData(@PathVariable String id){
+
         return userService.findUserById(id);
     }
 

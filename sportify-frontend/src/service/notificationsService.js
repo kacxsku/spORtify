@@ -15,3 +15,5 @@ const deleteNotificationForUser = (userId, notificationToDeleteId) => {
     const request = axios.delete(`${baseUrl}/delete/${notificationToDeleteId}/user/${userId}`);
     return request.then(response => response.data);
 }
+
+export {getAllNotificationsForUser, createNotificationForUser, deleteNotificationForUser};

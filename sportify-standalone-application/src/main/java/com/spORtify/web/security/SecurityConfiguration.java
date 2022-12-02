@@ -54,10 +54,11 @@ public class SecurityConfiguration  {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
-        return security
+        return security.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/register","/login").permitAll()
-                .anyRequest().authenticated()
+//                .antMatchers("/","/register","/login").permitAll()
+//                .anyRequest().authenticated()
+                .antMatchers("/","/*").permitAll()
                 .and()
                 .exceptionHandling()
                 .and()
@@ -69,9 +70,9 @@ public class SecurityConfiguration  {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .and()
-                .csrf().disable()
-                .cors().disable()
-                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+//                .csrf().disable()
+//                .cors().disable()
+//                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

@@ -10,17 +10,18 @@ import { useNavigate } from "react-router-dom";
 
 function renderRow(props) {
     const { index } = props;
+    console.log(index);
     return (
       <ListItem style={{paddingLeft: "0em", marginLeft: "0em"}} key={index} component="div" disablePadding>
         <ListItemButton>
-          <Announcement />
+          <Announcement data={props.data}/>
         </ListItemButton>
       </ListItem>
     );
 }
 
 
-const ActivitiesList = () => {
+const ActivitiesList = ({data}) => {
   const navigate = useNavigate();
 
   function HandleActivityCLick(pageUrl){

@@ -35,9 +35,9 @@ const RegisterPage = () => {
                         </Grid>
                     </Grid>
                     <RadioGroup className="GenderForm" row={true} style={{marginTop: "1em"}} defaultValue="female" >
-                        <FormControlLabel value="male" control={<Radio  />} label="man"/>
-                        <FormControlLabel value="female" control={<Radio  />} label="woman"/>
-                        <FormControlLabel value="not specified" control={<Radio  />} label="not specified"/>
+                        <FormControlLabel value="male" control={<Radio color="primary" />} label="man"/>
+                        <FormControlLabel value="female" control={<Radio  color="primary" />} label="woman"/>
+                        <FormControlLabel value="not specified" control={<Radio color="primary" />} label="not specified"/>
                     </RadioGroup>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={6}>

@@ -26,3 +26,5 @@ const assignParticipantToAnnouncement = (announcementId, userId) => {
     const request = axios.put(`${baseUrl}/assign/${announcementId}/${userId}`);
     return request.then(response => response.data);
 }
+
+export {createAnnouncement, deleteAnnouncement, getAnnouncement, updateAnnouncement, assignParticipantToAnnouncement};
