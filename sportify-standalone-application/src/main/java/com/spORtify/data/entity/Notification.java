@@ -16,11 +16,11 @@ import javax.persistence.*;
 public class Notification {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long notificationId;
 
     @OneToOne
-    @JoinColumn(name = "ImportanceLevelId", nullable = false, insertable=false, updatable=false)
+    @JoinColumn(name = "ImportanceLevelId", nullable = false, insertable = false, updatable = false)
     private ImportanceLevel importanceLevel;
 
     private String title;
@@ -29,6 +29,4 @@ public class Notification {
 
     @ManyToOne
     private User user;
-
-
 }

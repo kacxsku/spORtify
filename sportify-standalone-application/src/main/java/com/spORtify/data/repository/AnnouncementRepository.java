@@ -10,9 +10,7 @@ import java.util.List;
 @Repository
 public interface AnnouncementRepository extends JpaRepository<Announcement, Long> {
     void deleteByAnnouncementId(Long announcementId);
-
     Announcement getAnnouncementByAnnouncementId(Long announcementId);
-
     List<Announcement> getAnnouncementsByCreator(User user);
     List<Announcement> getAnnouncementsByParticipant(User user);
 
