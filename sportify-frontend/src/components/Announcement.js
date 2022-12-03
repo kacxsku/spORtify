@@ -4,9 +4,17 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import '../styles/common.css'
 import { MapView } from '../mapbox/map';
+import { useNavigate } from "react-router-dom";
 
-const Announcement = () => {
+const Announcement = ({data}) => {
+    const navigate = useNavigate();
 
+    function HandleActivityCLick(id){
+      navigate("/activity/".concat(id), {id: id})
+    }
+  
+    const id= data.announcementId;
+    console.log(data);
     return (
         <div>
                 <Paper sx={{
@@ -16,34 +24,30 @@ const Announcement = () => {
                     style={{
                         height: "9em",
                         width: "40em"
-                    }}>
+                    }}
+                    onClick={() => HandleActivityCLick(id)}
+                    >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm container>
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
                             <Typography gutterBottom variant="subtitle1" component="div">
-                                Title
+                                {data.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary" fontSize={10}>
-                                ID: 1030114
+                                {data.date}
                             </Typography>
                             <Typography variant="body2"  gutterBottom fontSize={12} sx={{
                                 width: "29em",
                                 height: "7em",
                                 overflow: "hidden"
                                 }}>
-                                Full resolution 1920x1080 • JPEGdadsdsaasdasdaddDDDDDDDDDDDDDDDDDDDDDDDDDDDDD DDDDDDDDDDDDD
-                                Full resolution 1920x1080 • JPEGwefDWGE WGEGG   WEETQ   
-                                Full resolution 1920x1080 • JPEG
-                                Full resolution 1920x1080 • JPEG
-                                Full resolution 1920x1080 • JPEG
-                                Full resolution 1920x1080 • JPEG
-                                Full resolution 1920x1080 • JPEG
+                               {data.content}
                             </Typography>
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <MapView />
+                            <MapView coordinate={data.coordinate}/>
                         </Grid>
                         </Grid>
                     </Grid>

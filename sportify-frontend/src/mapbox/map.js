@@ -9,11 +9,12 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2FjeHNrdSIsImEiOiJja3V4dmk3OWkyaXU4Mm5xdjQ5eDI2YnI5In0._VztRL12bY4t9w17ap7eQw';
 
-const MapView = () => {
+const MapView = ({coordinate}) => {
+    console.log("cords", coordinate);
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-70.9);
-    const [lat, setLat] = useState(42.35);
+    const [lng, setLng] = useState(coordinate.longitude);
+    const [lat, setLat] = useState(coordinate.latitude);
     const [zoom, setZoom] = useState(7);
     const longitude = -70.9;
     const latitude = 42.35;
@@ -28,7 +29,7 @@ const MapView = () => {
                 width: "2em",
                 height: "5em"
             },
-            center: [longitude, latitude],
+            center: [lng, lat],
             zoom: zoom,
         });
 
@@ -39,7 +40,7 @@ const MapView = () => {
         new mapboxgl.Marker({
             color: "#ff1500",
             draggable: false,
-          }).setLngLat([longitude, latitude]).addTo(map.current);
+          }).setLngLat([lng, lat]).addTo(map.current);
     });
     
 
@@ -96,8 +97,10 @@ export function MapFinder(){
         geocoder.current = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl,
-            marker: false, 
-            placeholder: 'Search for  places',
+            marker:  {
+                color: 'orange'
+                }, 
+            placeholder: 'Search for places',
           });
           map.current.addControl(geocoder.current);
     });
@@ -117,6 +120,7 @@ export function MapFinder(){
       geocoder.current.on('result', (event) => {
         map.getSource('single-point').setData(event.result.geometry);
       });
+
     });
 
     return (

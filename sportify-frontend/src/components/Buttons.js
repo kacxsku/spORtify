@@ -6,7 +6,7 @@ import {sendEmail} from "../notifications/sendNotification"
 const RegisterButton = ({style, href}) =>{
     console.log(href)
     return (
-        <Button component={RouterLink} to= {href}
+        <Button type="submit" component={RouterLink} to= {href}
         style={{...style,
             borderRadius: 2,
             backgroundColor: "#758BFD",

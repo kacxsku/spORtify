@@ -1,4 +1,4 @@
-import React, {useState, useRef, forwardRef} from "react";
+import React, {useState, useRef, forwardRef, useContext} from "react";
 import { Button, IconButton } from "@material-ui/core";
 import { FormTextField,  MulitlineFormTextField } from "../components/FormTextFields";
 import { TextField } from "@material-ui/core";
@@ -10,6 +10,9 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import {MapFinder} from '../mapbox/map';
 import '../styles/AddActivityForm.css'
+import announcementService from '../service/announcementService'
+import { UserContext } from "../userContext";
+import { useNavigate } from "react-router-dom";
 
 const AddActivityModal = () => {
     const ref = useRef();
@@ -36,26 +39,58 @@ const AddActivityModal = () => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
-                    <ActivityForm ref={ref} onSave={handleSave} onClose={handleClose} />
+                    {/* <ActivityForm ref={ref} /> */}
+                    <ActivityForm ref={ref}  onClose={handleClose} />
             </Modal>
         </div>
     )
 }
 
-const ActivityPrimaryData = () => {
+const ActivityPrimaryData = ({setFormTitle, setFormDate, setFormTime}) => {
     return (
         <div className="ActivityPrimaryData">
-        <FormTextField id="AddActivityTitleField" label = "Activity title" />
-        <Calendar />
+        <FormTextField setValue={setFormTitle} id="AddActivityTitleField" label ="Activity title" />
+        <Calendar setFormDate={setFormDate} setFormTime={setFormTime} />
         <MapFinder />
     </div>
     )
 }
 
 const ActivityForm = forwardRef((props, ref)=> {
+    const user = useContext(UserContext);
+    const [open, setOpen] = useState(false);
+    const handleClose = () => setOpen(false);
+
+    const [date, setData] = useState();
+    const [time, setTime] = useState();
+    const [title, setTitle] = useState();
+    const [filter, setFilter] = useState();
+    const navigate = useNavigate();
+    console.log("flt", filter);
+
+
+    const handleSubmit = evt => {
+        evt.preventDefault();
+        const announcementDto = {
+            title: title,
+            content: evt.target.AddActivityMulitlineFormTextField.value,
+            date: date,
+            time: time,
+            userId: user,
+            skills: "",
+            Coordinate: {
+                longitude: "",
+                latitude: ""
+            }
+        }
+        console.log("agd",announcementDto);
+        // announcementService.createAnnouncement(announcementDto);
+        props.onClose()
+    }
 
     return (
         <Box 
+        component="form"
         {...props}
         ref={ref} 
         className="ActivityFormBox"
@@ -69,14 +104,15 @@ const ActivityForm = forwardRef((props, ref)=> {
             bgcolor: 'background.paper',
             border: '1px solid #000',
             boxShadow: 15,
-            padding: 2}}>
+            padding: 2}}
+            onSubmit={handleSubmit}>
                 <div className="NewActivityForm">
-                    <ActivititesFilters sx={{margin:0}}/>
+                    <ActivititesFilters sx={{margin:0}} setFilter={setFilter} />
                     <div className="ActivityData" sx={{padding: "1em"}}>
-                        <ActivityPrimaryData />
+                        <ActivityPrimaryData setFormTitle={setTitle} setFormDate={setData} setFormTime={setTime} />
                         <TextField required multiline {...{
                             minRows: 14,
-                            id: "MulitlineFormTextField",
+                            id: "AddActivityMulitlineFormTextField",
                             label: "Write activity description",
                             style: {
                                 width: "30em",
@@ -86,7 +122,7 @@ const ActivityForm = forwardRef((props, ref)=> {
                             }}}/>
                     </div>
                     <div className="AddActivityFormButtons">
-                        <Button onClick={props.onSave}>Save</Button>
+                        <Button type={"submit"} variant="contained" >Save</Button>
                         <Button onClick={props.onClose}>Cancel</Button>
                     </div>
                 </div>

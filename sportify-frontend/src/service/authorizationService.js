@@ -12,9 +12,10 @@ const changePassword = () => {
     return request.then(response => response.data);
 }
 
-const registerUser = () => {
-    const request = axios.post(`${baseUrl}/register`);
+const registerUser = (newUser) => {
+    const request = axios.post(`${baseUrl}/register`, newUser);
+    console.log("reg", request)
     return request.then(response => response.data);
 }
 
-export { login, changePassword, registerUser };
+export default { login, changePassword, registerUser };

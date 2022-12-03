@@ -8,18 +8,27 @@ import { TimePicker } from '@mui/x-date-pickers';
 import '../styles/common.css'
 
 
-const Calendar = () => {
+const Calendar = ({setFormDate, setFormTime}) => {
 
     const [date, setDate] = useState(dayjs(new Date()));
     const [time, setTime] = useState(dayjs(new Date()));
 
     const handleDateChange = (newValue) => {
-        setDate(newValue);
+        setTime(newValue);
+        var date = new Date(newValue)
+        var finalDate = date.getDate() + ' ' +  date.getMonth() + ' ' +  date.getFullYear()
+        setFormDate(finalDate);
       };
 
       const handleTimeChange = (newValue) => {
         setTime(newValue);
+        var time = new Date(newValue)
+        var hour = time.getHours();
+        var minutes = time.getMinutes();
+        var finalTime = (hour<10?'0':'') + hour + ':' + (minutes<10?'0':'') + minutes
+        setFormTime(finalTime);
       };
+
 
 
     return (

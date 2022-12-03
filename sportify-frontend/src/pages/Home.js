@@ -10,20 +10,37 @@ import '../styles/common.css'
 import TextField from '@mui/material/TextField';
 import { ActivitiesList } from "../components/ActivitiesList";
 import announcementsService from '../service/announcementsService'
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Home = () => {
+    const [isLoading, setLoading] = useState(true);
     const [announcements, setAnnouncements] = useState([]);
 
     useEffect(() => {
         announcementsService.getAllAnnouncements()
         .then(announcements => {
             setAnnouncements(announcements);
+            setLoading(false);
             console.log("get all announcement operation successfully finish", announcements);
         }).catch(error => {
             console.log("unable to get all announcements",error)
         })
-        
     }, []);
+
+    if (isLoading) {
+        return (
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%"
+                }}>
+                    <CircularProgress />
+            </div>
+        )
+      }
     
     const SearchInput = () => {
         return (
@@ -46,7 +63,8 @@ const Home = () => {
                 <ActivititesFilters />
                 <div className="SearchAnnouncementList">
                     <SearchInput />
-                    <ActivitiesList data={announcements} />
+                    {!isLoading && <ActivitiesList data={announcements} />}
+                    
                 </div>
             </div>
             <RightPageContent />

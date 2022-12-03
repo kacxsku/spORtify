@@ -1,22 +1,29 @@
 import { TextField } from "@material-ui/core";
+import React, {useState, useRef, forwardRef, useContext} from "react";
 
 
-const FormTextField = ({...props}) => {
+const FormTextField = ({id, label, placeholder, setValue}) => {
+    const [input, setInput] = useState();
+
+    // const handleInputChange =(value) => {
+    //     // setInput(value);
+    //     setValue(value);    
+    // }
+
     return (
         <TextField
         required
-        {...{
-        id: props.id,
-        label: props.label,
-        placeholder: props.placeholder
-        }}
+        id={id}
+        label={label}
+        placeholde= {placeholder}
+        // onChange={(newValue) => handleInputChange(newValue.target.value)}
+        onChange={setInput}
         style={{
             marginTop: "0.3em",
             padding: "0.4em"
         }}
         />
     )
-
 }
 
 const FormPasswordField = ({...props}) => {

@@ -27,4 +27,4 @@ const assignParticipantToAnnouncement = (announcementId, userId) => {
     return request.then(response => response.data);
 }
 
-export {createAnnouncement, deleteAnnouncement, getAnnouncement, updateAnnouncement, assignParticipantToAnnouncement};
+export default {createAnnouncement, deleteAnnouncement, getAnnouncement, updateAnnouncement, assignParticipantToAnnouncement};

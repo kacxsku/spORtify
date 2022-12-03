@@ -13,9 +13,10 @@ const updateUserPrivateData = (id, newData) => {
 }
 
 
-const getUserData = (id) => {
+const getUserData = async (id) => {
     const request = axios.get(`${baseUrl}/${id}`);
-    return request.then(response => response.data);
+    const response = await request
+    return response.data
 }
 
-export {updateUserDescription, updateUserPrivateData, getUserData};
+export default {updateUserDescription, updateUserPrivateData, getUserData};

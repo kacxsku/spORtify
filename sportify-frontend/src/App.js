@@ -1,7 +1,7 @@
 import './App.css';
 import {Route, Routes, useParams} from 'react-router-dom'
 import { createContext } from 'react';
-import  {useState} from "react";
+import  {useState, useEffect} from "react";
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { Activities } from "./pages/Activities";
@@ -12,9 +12,7 @@ import { Home } from "./pages/Home";
 import {Activity} from './pages/Activity'
 import {EditActivity} from './pages/EditActivity'
 import {Chat} from './components/ChatRoom'
-
-export const userContext = createContext();
-
+import { UserContextProvider } from "./userContext";
 
 function Announcement() {
   const params = useParams();
@@ -23,28 +21,9 @@ function Announcement() {
 }
 
 function App() {
-  
-  const[user,setUser] = useState({
 
-    id : "",
-
-    email :"",
-
-    phoneNumber :"",
-
-    firstName : "",
-
-    lastName :"",
-
-    city : "",
-
-    typeOfAccount:"",
-
-    image : null
-
-})
   return (
-    <userContext.Provider value={{user, setUser}}>
+    <UserContextProvider>
       <Routes>
           <Route path="/"  element={<LoginPage />}/>
           <Route path="/register"  element={<RegisterPage />}/>
@@ -57,7 +36,7 @@ function App() {
           <Route path="/activity/:id/edit" element={<EditActivity />} />
           <Route path="/chat" element={<Chat />} />
       </Routes>
-    </userContext.Provider>
+    </UserContextProvider>
   )
 }
 
