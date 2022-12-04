@@ -19,7 +19,9 @@ import {timer, sendEmail, sendPush} from "../notifications/sendNotification"
 
 
 const Menu = () => {
-
+    const user = localStorage.getItem('user');
+    const userJson = JSON.parse(user)
+  
     // useEffect( () => {
         setInterval(() => {
             //pobierz dane z bazki i ustaw w tablicy  mail: data
@@ -83,7 +85,7 @@ const Menu = () => {
                 <li onClick={() => handlePageChange("/profile")}>
                     <SidebarLink text="Profile" Icon={AccountBoxIcon}  />
                 </li>
-                <li onClick={() => handlePageChange("/chat")}>
+                <li onClick={() => handlePageChange("/chat/".concat(userJson.userId))}>
                     <SidebarLink text="Messages" Icon={SendIcon}/>
                 </li>
                 <li>

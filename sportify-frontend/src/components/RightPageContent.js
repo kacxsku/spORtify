@@ -4,13 +4,14 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/material/Typography';
 import '../styles/common.css'
 import avatar from '../assets/avatar.png' 
-import { UserContext } from "../userContext";
+import { UserContext } from "../context/userContext";
 import Avatar from 'react-avatar';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const RightPageContent = () =>{
 
     const user = useContext(UserContext);
+    console.log(user);
     if (!user) {
         return (
             <div style={{

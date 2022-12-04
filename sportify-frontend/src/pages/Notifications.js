@@ -10,7 +10,7 @@ import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import GradeIcon from '@mui/icons-material/Grade';
 import CircularProgress from '@mui/material/CircularProgress';
 import notificationsService from '../service/notificationsService'
-import { useUserContextState } from "../userContext";
+import { useUserContextState } from "../context/userContext";
 
 
 const NotificationsListItem = ({n}) => {

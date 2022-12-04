@@ -9,29 +9,64 @@ import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import authorizationService from '../service/authorizationService'
-
+import { auth, db } from "../firebase/firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const RegisterPage = () => {
-
     let navigate = useNavigate(); 
+
+    const firebaseAuth = async (username, password, email) => {
+        console.log("fb", email)
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+              auth,
+              email,
+              password
+            );
+            const update = await updateProfile(auth.currentUser, {
+              displayName: username,
+            });
+        
+            const user = userCredential.user;
+        
+            setDoc(doc(db, "users", user.uid), {
+              username: username,
+              email: email,
+              userId: user.uid,
+              timestamp: new Date(),
+            });
+        
+            navigate("/");
+          } catch (error) {
+            alert(error.message);
+          }
+    }
 
     const handleSubmit = evt => {
         console.log("handle");
         evt.preventDefault();
+        const password = evt.target.RegisterFormPasswordTextField.value;
+        const name = evt.target.RegisterFormNameTextField.value;
+        const surname = evt.target.RegisterFormsurnameextField.value;
+        const username = name + surname;
+        const userEmail = evt.target.RegisternFormEmailTextField.value;
         const newUser = {
-            name : evt.target.RegisterFormNameTextField.value,
-            surname: evt.target.RegisterFormsurnameextField.value,
-            email: evt.target.RegisternFormEmailTextField.value,
+            name : name,
+            surname: surname,
+            email: userEmail,
             phoneNumber: evt.target.RegisterFormPhoneNumberTextField.value,
             gender: evt.target.gender.value,
-            password: evt.target.RegisterFormPasswordTextField.value,
+            password: password,
             city: evt.target.RegisterFormCityTextField.value,
             description: evt.target.RegisterFormDescriptionMultilineTextField.value
         };
 
         authorizationService.registerUser(newUser);
+        firebaseAuth(username, password,userEmail)
         navigate("/")
     }
+
 
     return (  
         <div className="Page">

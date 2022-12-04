@@ -5,6 +5,23 @@ import { ActivitiesList } from "../components/ActivitiesList";
 import announcementsService from '../service/announcementsService'
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
+import { Rating } from '@mui/material';
+import Box from '@mui/material/Box';
+
+const ActivityOpinion = () => {
+    const [value, setValue] = useState(null);
+
+    const handleRateChange = (newValue) =>{
+        setValue(newValue);
+    }
+
+    return(
+        <Box className='opinion' mb={2}>
+            <Typography variant="h6" pl={1} mr={"1em"}>Activity opinion:</Typography>
+            <Rating name="activityRate" onChange={handleRateChange} />
+        </Box>
+    )
+}
 
 const Profile = () => {
     const [isLoading, setLoading] = useState(true);
@@ -13,7 +30,8 @@ const Profile = () => {
     const userJson = JSON.parse(user)
 
     useEffect(() => {
-        announcementsService.getAllAnnouncementsForParticipant(userJson.userId)
+        // announcementsService.getAllAnnouncementsForParticipant(userJson.userId)
+        announcementsService.getAllAnnouncements()
         .then(announcements => {
             setAnnouncements(announcements);
             setLoading(false);
@@ -36,7 +54,6 @@ const Profile = () => {
             </div>
         )
       }
-    
 
     return (
         <div className="PageContent">

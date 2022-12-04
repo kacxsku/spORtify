@@ -33,6 +33,8 @@ const Activity = () => {
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const activityId = window.location.pathname.match( /\d+/ )[0];
 
     useEffect(() => {
@@ -63,9 +65,6 @@ const Activity = () => {
     const handleRateChange = (newValue) =>{
         setValue(newValue);
     }
-
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     const handleClick = (pageUrl) =>{
         if(pageUrl === '/delete'){
@@ -98,10 +97,7 @@ const Activity = () => {
                             <Typography variant="h5" pb={2} pl={1}>date: {activity.date}</Typography>
                             <Typography variant="h5" pb={2} pl={1}>category: </Typography> 
                         </Box>
-                        <Box className='opinion' mb={2}>
-                                <Typography variant="h6" pl={1} mr={"1em"}>Activity opinion:</Typography>
-                                <Rating name="activityRate" onChange={handleRateChange} />
-                        </Box>
+
                         {activity.participant ? (
                         <Typography pl={1} mb={"1em"} variant="h6" >Participant:</Typography>
                         ) : null}

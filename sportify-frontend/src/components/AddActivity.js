@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import {MapFinder} from '../mapbox/map';
 import '../styles/AddActivityForm.css'
 import announcementService from '../service/announcementService'
-import { UserContext } from "../userContext";
+import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 
 const AddActivityModal = () => {

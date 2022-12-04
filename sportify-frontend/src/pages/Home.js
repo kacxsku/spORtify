@@ -10,12 +10,17 @@ import '../styles/common.css'
 import TextField from '@mui/material/TextField';
 import { ActivitiesList } from "../components/ActivitiesList";
 import announcementsService from '../service/announcementsService'
+import announcementService from "../service/announcementService";
 import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button'
+
+
 
 
 const Home = () => {
     const [isLoading, setLoading] = useState(true);
     const [announcements, setAnnouncements] = useState([]);
+    const [currentAnnouncement, setCurrentAnnouncement] = useState("");
 
     useEffect(() => {
         announcementsService.getAllAnnouncements()
@@ -41,6 +46,24 @@ const Home = () => {
             </div>
         )
       }
+
+      const ReserveButton = () => { 
+        const user = localStorage.getItem('user');
+        const userJson = JSON.parse(user)
+        
+        const reserveActivity = e => {
+            e.preventDefult();
+            const userId = userJson.userId;
+            // announcementService.assignParticipantToAnnouncement();
+            const activityId = currentAnnouncement; //todo
+        }
+    
+        return(
+            <Button type={"submit"} variant="contained" color="default" onClick={reserveActivity}>
+              Make an Appointment
+            </Button>
+        )
+    }
     
     const SearchInput = () => {
         return (

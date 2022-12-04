@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes, useParams} from 'react-router-dom'
+import {Navigate, Route, Routes, useParams} from 'react-router-dom'
 import { createContext } from 'react';
 import  {useState, useEffect} from "react";
 import { LoginPage } from './pages/LoginPage';
@@ -11,10 +11,14 @@ import { Settings } from "./pages/Settings";
 import { Home } from "./pages/Home";
 import {Activity} from './pages/Activity'
 import {EditActivity} from './pages/EditActivity'
-import {Chat} from './components/ChatRoom'
-import { UserContextProvider } from "./userContext";
+import {Chat} from './pages/messages'
+import { UserContextProvider } from "./context/userContext";
+
+
+const userid = 
 
 function Announcement() {
+
   const params = useParams();
 
   return <Activity />;
@@ -32,9 +36,9 @@ function App() {
           <Route path="/notifications"  element={<Notifications />}/>
           <Route path="/profile"  element={<Profile />}/>
           <Route path="/settings"  element={<Settings />}/>
-          <Route path="/activity/:id" element={<Announcement />} />
-          <Route path="/activity/:id/edit" element={<EditActivity />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/activity/:userId" element={<Activity />} />
+          <Route path="/activity/:userId/edit" element={<EditActivity />} />
+          <Route path="/chat/:userId" element={<Chat />} />
       </Routes>
     </UserContextProvider>
   )
