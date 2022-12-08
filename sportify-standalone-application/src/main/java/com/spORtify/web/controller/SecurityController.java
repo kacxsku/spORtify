@@ -5,6 +5,7 @@ import com.spORtify.web.dto.UserDto;
 import com.spORtify.web.service.security.UserSecurityService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,7 @@ public class SecurityController {
         }
     }
 
-    @PostMapping(REGISTRATION_SAVE_PATH)
+    @PostMapping(value = REGISTRATION_PATH)
     public ResponseEntity<String> registerUser(@RequestBody UserDto userDto){
         try {
             userSecurityService.createUser(userDto);

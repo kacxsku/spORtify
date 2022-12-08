@@ -33,7 +33,7 @@ public class Announcement {
     private User creator;
 
     @OneToOne
-    @JoinColumn(name = "participant", insertable=false, updatable=false)
+    @JoinColumn(name = "participant", insertable=false)
     private User participant;
 
     @OneToOne

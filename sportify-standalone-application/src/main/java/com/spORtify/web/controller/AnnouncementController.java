@@ -16,6 +16,11 @@ public class AnnouncementController {
 
     private AnnouncementService announcementService;
 
+    @GetMapping(ANNOUNCEMENT_PATH + "/{id}")
+    public Announcement getAnnouncement(@PathVariable String id){
+        return announcementService.getAnnouncement(id);
+    }
+
     @PostMapping(ANNOUNCEMENT_PATH + "/add")
     public ResponseEntity<String> addAnnouncement(@RequestBody AnnouncementDto announcement) {
         try {
@@ -41,7 +46,7 @@ public class AnnouncementController {
         return announcementService.updateAnnouncement(announcementToUpdateId,announcementDto);
     }
 
-    @PostMapping(ANNOUNCEMENT_PATH + "/assign/{announcementId}/{userId}")
+    @PutMapping(ANNOUNCEMENT_PATH + "/assign/{announcementId}/{userId}")
     public ResponseEntity<String> assignParticipant(@PathVariable String announcementId, @PathVariable String userId){
         try {
             announcementService.assignParticipantToAnnouncement(announcementId, userId);

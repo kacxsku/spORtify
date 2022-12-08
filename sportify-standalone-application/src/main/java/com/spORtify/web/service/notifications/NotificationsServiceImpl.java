@@ -25,7 +25,7 @@ public class NotificationsServiceImpl implements NotificationsService{
 
     @Override
     public Notification createNotification(NotificationDto notificationDto) {
-        return notificationDtoMapper.mapDto(notificationDto);
+        return notificationRepository.save(notificationDtoMapper.mapDto(notificationDto));
     }
 
 }

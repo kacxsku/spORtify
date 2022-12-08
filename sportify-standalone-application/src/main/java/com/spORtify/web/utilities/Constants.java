@@ -11,7 +11,7 @@ public class Constants {
     public static final String LOGIN_PATH = AUTHORIZATION_PATH + "/login";
     public static final String LOGIN_CHANGE_PASSWORD_PATH = LOGIN_PATH + "/change/password";
     public static final String REGISTRATION_PATH = AUTHORIZATION_PATH + "/register";
-    public static final String REGISTRATION_SAVE_PATH = REGISTRATION_PATH + "/register/save";
+//    public static final String REGISTRATION_SAVE_PATH = REGISTRATION_PATH;
 
     //user
     public static final String USER_PATH = "/user";

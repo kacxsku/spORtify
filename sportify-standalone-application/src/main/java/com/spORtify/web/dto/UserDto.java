@@ -22,7 +22,8 @@ public class UserDto {
 
     private String password;
 
+    private String city;
+
     private String description;
 
-    private Address address;
 }

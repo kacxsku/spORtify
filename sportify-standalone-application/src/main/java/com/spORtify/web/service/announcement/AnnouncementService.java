@@ -8,9 +8,15 @@ import java.util.List;
 
 public interface AnnouncementService {
     List<Announcement> getAllAnnouncements();
-    Announcement updateAnnouncement(String announcementToUpdateId,AnnouncementDto announcementDto);
+
+    Announcement updateAnnouncement(String announcementToUpdateId, AnnouncementDto announcementDto);
+
     void deleteAnnouncement(String id);
+
     void addAnnouncement(AnnouncementDto announcement);
-    void assignParticipantToAnnouncement(String announcementId,String userId);
+
+    void assignParticipantToAnnouncement(String announcementId, String userId);
+
     Announcement getAnnouncement(String announcementId);
+
 }

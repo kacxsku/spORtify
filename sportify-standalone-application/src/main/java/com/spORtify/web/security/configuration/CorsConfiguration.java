@@ -24,11 +24,11 @@ public class CorsConfiguration implements Filter {
         HttpServletRequest request= (HttpServletRequest) servletRequest;
 
         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-        response.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,OPTIONS");
+        response.setHeader("Access-Control-Allow-Methods", "CREATE,GET,POST,DELETE,PUT,OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "http://localhost:3000");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, " + "Access-Control-Allow-Headers, Authorization, X-Requested-With,observe");
         response.setHeader("Access-Control-Allow-Credentials", "true");
-        chain.doFilter(servletRequest, servletResponse);
+        chain.doFilter(request, response);
     }
 
     @Override

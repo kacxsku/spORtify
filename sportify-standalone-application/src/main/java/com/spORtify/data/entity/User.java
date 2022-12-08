@@ -41,9 +41,9 @@ public class User {
     @JoinColumn(name = "address", insertable=false, updatable=false)
     private Address address;
 
-    @OneToOne
-    @JoinColumn(name = "gender", insertable=false, updatable=false)
-    private Gender gender;
+//    @OneToOne
+//    @JoinColumn(name = "gender", insertable=false, updatable=false)
+//    private Gender gender;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Opinion> opinions = new ArrayList<>();

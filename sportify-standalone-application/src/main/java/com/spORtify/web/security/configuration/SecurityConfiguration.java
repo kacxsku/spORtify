@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
+import org.springframework.web.cors.CorsConfiguration;
 
 import javax.annotation.Resource;
 
@@ -57,6 +58,10 @@ public class SecurityConfiguration {
 //                .loginPage(LOGIN_PATH)
                 .permitAll()
                 .and()
+                .csrf().disable()
+                .cors().disable()
+//                .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+//                .and()
 //                .loginProcessingUrl(LOGIN_PATH + "/process")
 //                .defaultSuccessUrl(USER_PATH)
 //                .failureUrl(LOGIN_PATH +"?error=true")
