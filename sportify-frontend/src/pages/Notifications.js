@@ -46,6 +46,7 @@ const Notifications = () => {
         })
     }, [user]);
 
+
     return (
         <div className="PageContent">
             <Menu />

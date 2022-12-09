@@ -32,8 +32,9 @@
 .TitleMap {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 30em;
+    width: 22em;
 }
 
 .holder {

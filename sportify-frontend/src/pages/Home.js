@@ -17,6 +17,8 @@ import Button from '@mui/material/Button'
 
 
 
+
+
 const Home = () => {
     const [isLoading, setLoading] = useState(true);
     const [announcements, setAnnouncements] = useState([]);
@@ -47,23 +49,6 @@ const Home = () => {
         )
       }
 
-      const ReserveButton = () => { 
-        const user = localStorage.getItem('user');
-        const userJson = JSON.parse(user)
-        
-        const reserveActivity = e => {
-            e.preventDefult();
-            const userId = userJson.userId;
-            // announcementService.assignParticipantToAnnouncement();
-            const activityId = currentAnnouncement; //todo
-        }
-    
-        return(
-            <Button type={"submit"} variant="contained" color="default" onClick={reserveActivity}>
-              Make an Appointment
-            </Button>
-        )
-    }
     
     const SearchInput = () => {
         return (
@@ -79,6 +64,7 @@ const Home = () => {
         )
     }
 
+    console.log("adsass",announcements)
     return (
         <div className="PageContent">
             <Menu />
@@ -86,7 +72,7 @@ const Home = () => {
                 <ActivititesFilters />
                 <div className="SearchAnnouncementList">
                     <SearchInput />
-                    {!isLoading && <ActivitiesList data={announcements} />}
+                    {!isLoading && <ActivitiesList announcements={announcements} path="activity/"  />}
                     
                 </div>
             </div>

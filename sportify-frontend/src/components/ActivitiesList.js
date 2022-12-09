@@ -6,26 +6,29 @@ import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 
-const RenderRow = props => {
-  const { data, index} = props;
-  console.log(index);
-
-  return (
-      <ListItem style={{paddingLeft: "0em", marginLeft: "0em"}} key={index} component="div" disablePadding>
-        <ListItemButton>
-          {data.map(an => <Announcement data ={an} key={an.announcementId} />)}
-        </ListItemButton>
-      </ListItem>
-    );
-}
 
 
-const ActivitiesList = (announcements) => {
 
-  const announcementsList = announcements.data
+const ActivitiesList = ({announcements, path}) => {
+
+  const announcementsList = announcements
   console.log("announcements", announcementsList)
   const size = announcementsList.length;
   console.log("size ", size);
+
+  const RenderRow = props => {
+    const { data, index} = props;
+    console.log(index);
+    
+  
+    return (
+        <ListItem style={{paddingLeft: "0em", marginLeft: "0em"}} key={index} component="div" disablePadding>
+          <ListItemButton>
+            {data.map(an => <Announcement  path={path} data ={an} key={an.announcementId}/>)}
+          </ListItemButton>
+        </ListItem>
+      );
+  }
 
   return(
     <div sx={{marginRight: "auto"}} >
@@ -37,7 +40,8 @@ const ActivitiesList = (announcements) => {
                   itemCount={size}
                   overscanCount={5}
                   itemData={announcementsList}>
-                    {RenderRow}                  
+                    {/* {() => RenderRow("path")}                   */}
+                    {RenderRow}
               </List>
           </Box>
     </div>

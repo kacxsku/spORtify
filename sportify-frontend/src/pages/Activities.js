@@ -76,11 +76,13 @@ const Activities = () => {
     const userJson = JSON.parse(user)
 
     useEffect(() => {
-        announcementsService.getAllAnnouncementsCreatedByUser(userJson.userId)
+        // announcementsService.getAllAnnouncementsCreatedByUser(userJson.userId)
+        announcementsService.getAllAnnouncementsCreatedByUser(1)
         .then(announcements => {
             setAnnouncements(announcements);
+            console.log("SA",announcements)
             setLoading(false);
-            console.log("get all announcement operation successfully finish", announcements);
+            console.log("get all announcement for user operation successfully finish", announcements);
         }).catch(error => {
             console.log("unable to get all announcements",error)
         })
@@ -105,15 +107,16 @@ const Activities = () => {
         <div className="PageContent">
             <Menu />
             <div className="content">
-                {!isLoading && ( announcements.length === 0 ? (                          
+{            console.log("SA",announcements)
+}
+                {!isLoading && ( !announcements || announcements.length === 0 ? (                          
                 <Typography gutterBottom variant="subtitle1" component="div">
                     No data ...
-                </Typography>) : 
-                <ActivitiesList data={announcements} />)}
+                </Typography>) : <ActivitiesList announcements={announcements} path="activity/"   />)}
             </div>
             <RightPageContent />
         </div>
     )
 }
 
-export {Activities};
+export {Activities, Actions};

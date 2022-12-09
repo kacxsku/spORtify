@@ -15,28 +15,13 @@ import { Button} from "@material-ui/core";
 import '../styles/menu.css'
 import logo from '../assets/logo.png' 
 import { Badge } from "@mui/material";
-import {timer, sendEmail, sendPush} from "../notifications/sendNotification"
-
 
 const Menu = () => {
-    const user = localStorage.getItem('user');
-    const userJson = JSON.parse(user)
-  
-    // useEffect( () => {
-        setInterval(() => {
-            //pobierz dane z bazki i ustaw w tablicy  mail: data
-            //stworzyc tablice z powiadomieniami w stylu "user,title, message, icon"
-            var time = timer("2022-10-26 19:25")
-            if(time){
-                sendEmail();
-                console.log("email sended");
-              }
-        }, 1000)
-    // })
-
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const [invisible, setInvisible] = useState(false);
+    const user = localStorage.getItem('user');
+    const userJson = JSON.parse(user);
 
     function handlePageChange(pageUrl){
         navigate(pageUrl)
@@ -79,7 +64,7 @@ const Menu = () => {
                         <SidebarLink text="Notifications" Icon={NotificationsIcon} />
                     </Badge>
                 </li>
-                <li onClick={() => handlePageChange("/activites")}>
+                <li onClick={() => handlePageChange("/activities")}>
                     <SidebarLink text="Activites" Icon={CalendarMonthIcon}  />
                 </li>
                 <li onClick={() => handlePageChange("/profile")}>

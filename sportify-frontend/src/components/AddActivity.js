@@ -85,6 +85,10 @@ const ActivityForm = forwardRef((props, ref)=> {
         }
         console.log("agd",announcementDto);
         // announcementService.createAnnouncement(announcementDto);
+        const announcements = JSON.parse(localStorage.getItem('announcements'));
+        announcements.push(announcementDto);
+        localStorage.setItem("announcements", JSON.stringify(announcements));
+
         props.onClose()
     }
 

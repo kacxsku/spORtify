@@ -9,15 +9,13 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2FjeHNrdSIsImEiOiJja3V4dmk3OWkyaXU4Mm5xdjQ5eDI2YnI5In0._VztRL12bY4t9w17ap7eQw';
 
-const MapView = ({coordinate}) => {
-    console.log("cords", coordinate);
+const MapView = ({longitude, latitude}) => {
+    // console.log("cords", coordinate);
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(coordinate.longitude);
-    const [lat, setLat] = useState(coordinate.latitude);
+    const [lng, setLng] = useState(longitude ? longitude : -70.9);
+    const [lat, setLat] = useState(latitude ? latitude : 42.35);
     const [zoom, setZoom] = useState(7);
-    const longitude = -70.9;
-    const latitude = 42.35;
 
     useEffect(() => {
         if (map.current) return; 

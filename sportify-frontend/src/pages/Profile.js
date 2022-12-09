@@ -62,10 +62,10 @@ const Profile = () => {
                 {!isLoading && ( announcements.length === 0 ? (                          
                 <Typography gutterBottom variant="subtitle1" component="div">
                     No data ...
-                </Typography>) : <ActivitiesList data={announcements} />)}
+                </Typography>) : <ActivitiesList announcements={announcements} path="activity/"  />)}
             </div>
             <RightPageContent />
         </div>
     )
 }
-export {Profile};
+export {Profile, ActivityOpinion};

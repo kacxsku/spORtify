@@ -15,8 +15,7 @@ const UserContextProvider = ({children}) => {
         .then(user => {
           setUser(user);
           localStorage.setItem("user", JSON.stringify(user));
-          // firebaseLogin(user.email, user.password)
-          firebaseAuth(user.name ,user.email, user.password);
+          // firebaseAuth(user.name ,user.email, user.password);
           console.log("get user operation successfully finish", user);
         }).catch(error => {
           console.log("unable to get user data", error)

@@ -1,10 +1,17 @@
-import {React} from "react";
+import React, {useState, useEffect} from "react";
 import '../styles/LoginPage.css'
 import '../styles/common.css'
 import {AppHeader} from '../components/Header'
 import {RegisterButton} from '../components/Buttons'
+import announcementsService from "../service/announcementsService";
+
 
 const LoginPage = () => {
+        setInterval(() => {
+            console.log("aaaassasasafas");
+
+        }, 10000) 
+
     return (  
         <div className="Page">
             <AppHeader />

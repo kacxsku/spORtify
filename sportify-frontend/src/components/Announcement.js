@@ -6,11 +6,13 @@ import '../styles/common.css'
 import { MapView } from '../mapbox/map';
 import { useNavigate } from "react-router-dom";
 
-const Announcement = ({data}) => {
+const Announcement = ({data, path}) => {
     const navigate = useNavigate();
+    console.log("pt", path)
 
     function HandleActivityCLick(id){
-      navigate("/activity/".concat(id), {id: id})
+        console.log(path)
+      navigate(path.concat(id))
     }
   
     const id= data.announcementId;
@@ -22,7 +24,7 @@ const Announcement = ({data}) => {
                     flexGrow: 1
                     }}
                     style={{
-                        height: "9em",
+                        height: "9.5em",
                         width: "40em"
                     }}
                     onClick={() => HandleActivityCLick(id)}
@@ -47,7 +49,7 @@ const Announcement = ({data}) => {
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <MapView coordinate={data.coordinate}/>
+                            <MapView coordinate={data.coordinate} width="100px" />
                         </Grid>
                         </Grid>
                     </Grid>
