@@ -78,5 +78,7 @@ body, html {
  
 .DateTime {
   display: flex;
-  flex-direction: row; 
+  flex-direction: column; 
+  margin-left: 2em;
+  justify-content: center;
 }

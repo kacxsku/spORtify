@@ -11,7 +11,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 const RightPageContent = () =>{
 
     const user = useContext(UserContext);
-    console.log(user);
     if (!user) {
         return (
             <div style={{

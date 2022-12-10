@@ -10,7 +10,6 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2FjeHNrdSIsImEiOiJja3V4dmk3OWkyaXU4Mm5xdjQ5eDI2YnI5In0._VztRL12bY4t9w17ap7eQw';
 
 const MapView = ({longitude, latitude}) => {
-    // console.log("cords", coordinate);
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(longitude ? longitude : -70.9);
@@ -123,7 +122,7 @@ export function MapFinder(){
 
     return (
         <div id="map">
-            <div ref={mapContainer} className="map-search-container" />
+            <div ref={mapContainer} className="map-s-container" />
         </div>
     )
 }

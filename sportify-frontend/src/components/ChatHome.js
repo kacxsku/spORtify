@@ -70,7 +70,6 @@ export default function ChatHome() {
   const [allMessages, setAllMessages] = useState([]);
   
   const user = auth.currentUser;
-  console.log("cu", user);
   
   const navigate = useNavigate();
   

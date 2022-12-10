@@ -34,10 +34,8 @@ const Actions = () => {
     const handleClose = () => setOpen(false);
     const handleClick = (pageUrl) =>{
         if(pageUrl === '/delete'){
-          console.log("delete");
 
         } else {
-          console.log("edit");
           navigate(window.location.pathname+pageUrl)
         }
     }
@@ -80,7 +78,6 @@ const Activities = () => {
         announcementsService.getAllAnnouncementsCreatedByUser(1)
         .then(announcements => {
             setAnnouncements(announcements);
-            console.log("SA",announcements)
             setLoading(false);
             console.log("get all announcement for user operation successfully finish", announcements);
         }).catch(error => {
@@ -107,8 +104,6 @@ const Activities = () => {
         <div className="PageContent">
             <Menu />
             <div className="content">
-{            console.log("SA",announcements)
-}
                 {!isLoading && ( !announcements || announcements.length === 0 ? (                          
                 <Typography gutterBottom variant="subtitle1" component="div">
                     No data ...

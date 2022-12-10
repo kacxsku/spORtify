@@ -14,13 +14,15 @@ const Calendar = ({setFormDate, setFormTime}) => {
     const [time, setTime] = useState(dayjs(new Date()));
 
     const handleDateChange = (newValue) => {
-        setTime(newValue);
-        var date = new Date(newValue)
-        var finalDate = date.getDate() + ' ' +  date.getMonth() + ' ' +  date.getFullYear()
+        var dateField = new Date(newValue)
+        setDate(newValue);
+        var finalDate = dateField.getDate() + ' ' +  dateField.getMonth() + ' ' +  dateField.getFullYear()
         setFormDate(finalDate);
       };
 
       const handleTimeChange = (newValue) => {
+        console.log(newValue)
+
         setTime(newValue);
         var time = new Date(newValue)
         var hour = time.getHours();
@@ -28,29 +30,28 @@ const Calendar = ({setFormDate, setFormTime}) => {
         var finalTime = (hour<10?'0':'') + hour + ':' + (minutes<10?'0':'') + minutes
         setFormTime(finalTime);
       };
-
-
-
+        
     return (
         <div className="DateTime">
             <LocalizationProvider  dateAdapter={AdapterDayjs}>
                 <DesktopDatePicker
+                    id= "DatePicker"
                     label="Enter date"
                     inputFormat="DD/MM/YYYY"
                     value={date.format("YYYY-MM-DD")}
-                    onChange={handleDateChange}
-                    renderInput={(params) => <TextField  sx={{width: "10em", height: "4em", size: "small",  marginRight: "1em"}} {...params} />}
+                    onChange={(x, event) => handleDateChange(x, event)}
+                    renderInput={(params) => <TextField  sx={{width: "10em", height: "3em", size: "small",  marginRight: "1em"}} {...params} />}
                 />
-                        </LocalizationProvider>
-                        <LocalizationProvider  dateAdapter={AdapterDayjs}>
-
+            </LocalizationProvider>
+            <LocalizationProvider  dateAdapter={AdapterDayjs}>
                 <TimePicker
                     label="Enter time"
                     inputFormat="hh:mm"
                     ampm={false}
                     value={time.format("L LT")}
-                    onChange={handleTimeChange}
-                    renderInput={(params) => <TextField sx={{width: "7em", height: "4em", size: "small",  marginRight: "1em"}} {...params} />}
+                    onChange={(x, event) => handleTimeChange(x,event)}
+                    renderInput={(params) => <TextField sx={{width: "10em",  size: "small",  marginRight: "1em", marginTop: "1em"}
+                } {...params} />}
                 />
             </LocalizationProvider>
         </div>

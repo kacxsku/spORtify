@@ -31,7 +31,6 @@ import { fontStyle } from '@mui/system';
 
 const Activity = () => {
     const params = useParams();
-    console.log(params);
     const[activity, setActivity] = useState(null)
     const [isLoading, setLoading] = useState(true);
     const [value, setValue] = useState(null);
@@ -43,7 +42,6 @@ const Activity = () => {
     const pathName = window.location.pathname;
     const activityId = pathName.match( /\d+/ )[0];
     const pathPrefix = pathName.split('/')[1];
-    console.log(pathPrefix);
 
     useEffect(() => {
       announcementService.getAnnouncement(activityId)
@@ -75,10 +73,8 @@ const Activity = () => {
 
     const handleClick = (pageUrl) =>{
         if(pageUrl === '/delete'){
-          console.log("delete");
 
         } else {
-          console.log("edit");
           navigate(window.location.pathname+pageUrl)
         }
     }
@@ -88,7 +84,6 @@ const Activity = () => {
     const reserveActivity = e => {
       e.preventDefault();
       const userId = userJson.userId;
-      console.log(userId)
       announcementService.assignParticipantToAnnouncement(activityId, userId );
       // const activityId = currentAnnouncement; //todo
   }
@@ -120,12 +115,12 @@ const Activity = () => {
             <div className="content">
                     <Paper className='ActivityDetails' elevation={5} style={{padding: "1em", overflow: "hidden"}}>
                         <div className="TitleMap" >
-                          <Typography variant="h6" gutterBottom p={1} height="1em" >
+                          <Typography variant="h6" gutterBottom p={1} height={"1em" } width={"10em"}>
                               {activity.title}
                           </Typography>
-                          <Box sx={{marginLeft: "20em"}}>
+                          {/* <Box sx={{marginLeft: "auto"}}> */}
                             <MapView longitude="" latitude="" />
-                          </Box>
+                          {/* </Box> */}
                         </div>
                         <Typography pb={2} pl={1} width={"24em"}>
                             {activity.content}

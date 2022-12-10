@@ -1,6 +1,7 @@
 .NewActivityForm{
     display: flex;
     flex-direction: row;
+    margin: 0;
 }
 
 .ActivityForm {
@@ -21,7 +22,6 @@
     flex-direction: row;
     align-items: flex-start;
     width: 800px;
-    margin-left: 1em;
 }
 
 .ActivityDescription{

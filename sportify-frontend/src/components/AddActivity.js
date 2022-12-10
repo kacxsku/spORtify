@@ -13,6 +13,8 @@ import '../styles/AddActivityForm.css'
 import announcementService from '../service/announcementService'
 import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
+import dayjs from 'dayjs';
+import Alert from '@mui/material/Alert';
 
 const AddActivityModal = () => {
     const ref = useRef();
@@ -21,7 +23,6 @@ const AddActivityModal = () => {
     const handleClose = () => setOpen(false);
 
     const handleSave = () => {
-        console.log("close")
         setOpen(false);
     } 
 
@@ -47,9 +48,22 @@ const AddActivityModal = () => {
 }
 
 const ActivityPrimaryData = ({setFormTitle, setFormDate, setFormTime}) => {
+    const handleInputChange =(value) => {
+        setFormTitle(value);    
+    }
     return (
         <div className="ActivityPrimaryData">
-        <FormTextField setValue={setFormTitle} id="AddActivityTitleField" label ="Activity title" />
+        <TextField
+        required
+        id="addactivitytitle"
+        label="title"
+        placeholde= "title"
+        onChange={(newValue) => handleInputChange(newValue.target.value)}
+        style={{
+            marginTop: "0.3em",
+            padding: "0.4em"
+        }}
+        />
         <Calendar setFormDate={setFormDate} setFormTime={setFormTime} />
         <MapFinder />
     </div>
@@ -61,30 +75,38 @@ const ActivityForm = forwardRef((props, ref)=> {
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
 
-    const [date, setData] = useState();
+    const [date, setDate] = useState(dayjs(new Date()).format("YYYY-MM-DD"));
     const [time, setTime] = useState();
     const [title, setTitle] = useState();
     const [filter, setFilter] = useState();
+    const [longitude, setLongitude] = useState("");
+    const [latitude, setlatitude] = useState("");
+    const [skills, setSkills] = useState([]);
     const navigate = useNavigate();
-    console.log("flt", filter);
-
+    // console.log("flt", filter);
+    
 
     const handleSubmit = evt => {
         evt.preventDefault();
+        if(!time){
+            return (
+                <Alert onClose={() => {}}>Time is incorrect</Alert>
+            )
+        }
         const announcementDto = {
             title: title,
             content: evt.target.AddActivityMulitlineFormTextField.value,
             date: date,
             time: time,
-            userId: user,
-            skills: "",
-            Coordinate: {
-                longitude: "",
-                latitude: ""
+            creator: user,
+            skills: skills,
+            coordinate: {
+                longitude: longitude,
+                latitude: latitude
             }
         }
-        console.log("agd",announcementDto);
         // announcementService.createAnnouncement(announcementDto);
+        console.log(announcementDto)
         const announcements = JSON.parse(localStorage.getItem('announcements'));
         announcements.push(announcementDto);
         localStorage.setItem("announcements", JSON.stringify(announcements));
@@ -103,24 +125,24 @@ const ActivityForm = forwardRef((props, ref)=> {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 820,
+            width: 850,
             height: 500,
             bgcolor: 'background.paper',
             border: '1px solid #000',
             boxShadow: 15,
-            padding: 2}}
+            padding: 1}}
             onSubmit={handleSubmit}>
                 <div className="NewActivityForm">
                     <ActivititesFilters sx={{margin:0}} setFilter={setFilter} />
                     <div className="ActivityData" sx={{padding: "1em"}}>
-                        <ActivityPrimaryData setFormTitle={setTitle} setFormDate={setData} setFormTime={setTime} />
+                        <ActivityPrimaryData setFormTitle={setTitle} setFormDate={setDate} setFormTime={setTime} />
                         <TextField required multiline {...{
                             minRows: 14,
                             id: "AddActivityMulitlineFormTextField",
                             label: "Write activity description",
                             style: {
                                 width: "30em",
-                                marginTop: "1em",
+                                marginTop: "0em",
                                 marginLeft: "1em",
                                 padding: "0.4em", 
                             }}}/>

@@ -8,15 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 const Announcement = ({data, path}) => {
     const navigate = useNavigate();
-    console.log("pt", path)
 
     function HandleActivityCLick(id){
-        console.log(path)
       navigate(path.concat(id))
     }
-  
+    
     const id= data.announcementId;
-    console.log(data);
+
     return (
         <div>
                 <Paper sx={{

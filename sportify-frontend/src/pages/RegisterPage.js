@@ -17,7 +17,6 @@ const RegisterPage = () => {
     let navigate = useNavigate(); 
 
     const firebaseAuth = async (username, password, email) => {
-        console.log("fb", email)
         try {
             const userCredential = await createUserWithEmailAndPassword(
               auth,
@@ -44,7 +43,6 @@ const RegisterPage = () => {
     }
 
     const handleSubmit = evt => {
-        console.log("handle");
         evt.preventDefault();
         const password = evt.target.RegisterFormPasswordTextField.value;
         const name = evt.target.RegisterFormNameTextField.value;

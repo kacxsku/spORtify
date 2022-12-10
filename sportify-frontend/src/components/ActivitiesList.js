@@ -1,47 +1,30 @@
 import React from "react";
 import { Announcement } from "../components/Announcement";
-import { FixedSizeList as List } from "react-window";import '../styles/home.css'
+import { Divider, List, ListItem, ListItemButton, Typography } from '@mui/material';
+import '../styles/home.css'
 import '../styles/common.css'
 import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-
-
-
 
 const ActivitiesList = ({announcements, path}) => {
 
   const announcementsList = announcements
-  console.log("announcements", announcementsList)
   const size = announcementsList.length;
-  console.log("size ", size);
 
-  const RenderRow = props => {
-    const { data, index} = props;
-    console.log(index);
-    
-  
+  function RenderRow({announcement}) {
     return (
-        <ListItem style={{paddingLeft: "0em", marginLeft: "0em"}} key={index} component="div" disablePadding>
-          <ListItemButton>
-            {data.map(an => <Announcement  path={path} data ={an} key={an.announcementId}/>)}
+        <ListItem  className='announcementListItem' >
+          <ListItemButton >
+            <Announcement  style={{paddingLeft: "0em", marginLeft: "0em"}}  path={path} data={announcement} />
           </ListItemButton>
-        </ListItem>
+      </ListItem>
       );
   }
 
   return(
-    <div sx={{marginRight: "auto"}} >
-      <Box sx={{ width: '45em', height: 600, bgcolor: 'background.paper' }}>
-              <List className="ActivitiesList"
-                  width={"45em"}
-                  height={600}
-                  itemSize={100}
-                  itemCount={size}
-                  overscanCount={5}
-                  itemData={announcementsList}>
-                    {/* {() => RenderRow("path")}                   */}
-                    {RenderRow}
+    <div  >
+      <Box className="ActivitiesList" sx={{bgcolor: 'background.paper', margin: "0.5em"}}>
+              <List  sx={{ height: "10em", width: '100%', maxWidth: 360}}>
+                    {announcementsList.map(an => <RenderRow  key={an.announcementId} announcement={an} />)}
               </List>
           </Box>
     </div>

@@ -5,18 +5,12 @@ import React, {useState, useRef, forwardRef, useContext} from "react";
 const FormTextField = ({id, label, placeholder, setValue}) => {
     const [input, setInput] = useState();
 
-    // const handleInputChange =(value) => {
-    //     // setInput(value);
-    //     setValue(value);    
-    // }
-
     return (
         <TextField
         required
         id={id}
         label={label}
         placeholde= {placeholder}
-        // onChange={(newValue) => handleInputChange(newValue.target.value)}
         onChange={setInput}
         style={{
             marginTop: "0.3em",

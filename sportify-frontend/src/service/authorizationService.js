@@ -14,7 +14,6 @@ const changePassword = () => {
 
 const registerUser = (newUser) => {
     const request = axios.post(`${baseUrl}/register`, newUser);
-    console.log("reg", request)
     return request.then(response => response.data);
 }
 

@@ -60,7 +60,6 @@ const EditActivity = ({props}) => {
                 latitude: ""
             }
         }
-        console.log("agd",announcementDto);
         // announcementService.updateAnnouncement(announcementDto);
         props.onClose()
     }

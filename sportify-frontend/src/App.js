@@ -14,15 +14,7 @@ import {EditActivity} from './pages/EditActivity'
 import {Chat} from './pages/messages'
 import { UserContextProvider } from "./context/userContext";
 import announcementsService from "./service/announcementsService";
-import {timer, sendEmail, sendPush} from "./notifications/sendNotification"
-
-
-function Announcement() {
-
-  const params = useParams();
-
-  return <Activity />;
-}
+import {timer, sendNotification} from "./notifications/sendNotification"
 
 function App() {
   const[activities, setActivities] = useState([])
@@ -39,19 +31,14 @@ function App() {
   },[])
 
   setInterval(() => {
-    console.log("setIner", activities)
     activities.forEach(function(activity) {
-        console.log(activity);
-        var time = timer("2022-12-09 18:24");
-        const activityDate = activity.date
-        console.log("meeting", activityDate);
-        console.log(time);
-        if(time){
-            sendEmail(activity.participant);
-            console.log("email sended");
-        }
+        // var time = timer(activity);
+        //   if(time){   
+            // sendNotification(activity);
+            // console.log("email sended");
+        // }
     })
-  }, 30000) 
+  }, 10000) 
 
   return (
     <UserContextProvider>
@@ -73,4 +60,4 @@ function App() {
   )
 }
 
-export default App;
+export  {App};

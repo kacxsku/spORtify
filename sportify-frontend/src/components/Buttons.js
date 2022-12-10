@@ -4,7 +4,6 @@ import { Link as RouterLink } from "react-router-dom";
 import {sendEmail} from "../notifications/sendNotification"
 
 const RegisterButton = ({style, href}) =>{
-    console.log(href)
     return (
         <Button type="submit" component={RouterLink} to= {href}
         style={{...style,

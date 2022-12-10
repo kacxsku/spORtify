@@ -1,8 +1,8 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:8080/notification'
 
-const createNotificationForUser = (userId, notification) => {
-    const request = axios.post(`${baseUrl}/create/user/${userId}`, notification);
+const createNotificationForUser = (notification) => {
+    const request = axios.post(`${baseUrl}`, notification);
     return request.then(response => response.data);
 }
 

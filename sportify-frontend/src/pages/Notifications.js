@@ -15,11 +15,12 @@ import { useUserContextState } from "../context/userContext";
 
 const NotificationsListItem = ({n}) => {
     return (
-        <ListItem key={n.notificationId="N"} className='NotificationsListItem' sx={{
+        <ListItem key={n.notificationId+"N"} className='NotificationsListItem' sx={{
             border: '0.5px solid #C5C6D0',
             width: "45em",
             height: "5em",
-            padding: "0.5em"
+            padding: "0.5em",
+            margin: "0.7em"
         }}>
         <CalendarTodayIcon fontSize='large' />
         <ListItemText key={n.notificationId+"LT"}
@@ -33,8 +34,8 @@ const NotificationsListItem = ({n}) => {
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
     const user = localStorage.getItem('user');
-    console.log(user);
     const userJson = JSON.parse(user)
+    console.log("notification")
 
     useEffect(() => {
         notificationsService.getAllNotificationsForUser(userJson.userId)
@@ -44,7 +45,7 @@ const Notifications = () => {
         }).catch(error => {
             console.log("unable to get all announcements",error)
         })
-    }, [user]);
+    }, []);
 
 
     return (

@@ -14,11 +14,6 @@ import announcementService from "../service/announcementService";
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button'
 
-
-
-
-
-
 const Home = () => {
     const [isLoading, setLoading] = useState(true);
     const [announcements, setAnnouncements] = useState([]);
@@ -64,7 +59,6 @@ const Home = () => {
         )
     }
 
-    console.log("adsass",announcements)
     return (
         <div className="PageContent">
             <Menu />
@@ -72,7 +66,10 @@ const Home = () => {
                 <ActivititesFilters />
                 <div className="SearchAnnouncementList">
                     <SearchInput />
-                    {!isLoading && <ActivitiesList announcements={announcements} path="activity/"  />}
+                    {console.log("check home")}
+                    {!isLoading && 
+                    <ActivitiesList announcements={announcements} path="activity/"  />
+                    }
                     
                 </div>
             </div>

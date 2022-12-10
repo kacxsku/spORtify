@@ -67,11 +67,9 @@ const UserContextProvider = ({children}) => {
   }
 
   const firebaseLogin = (mail, pass) => {
-    console.log("fbu", mail, pass);
     signInWithEmailAndPassword(auth, mail, pass)
     .then((userCredential) => {
       const userer = userCredential.user;
-      console.log("fbu", userer);
     })
     .catch((error) => {
       const errorCode = error.code;
