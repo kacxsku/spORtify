@@ -32,11 +32,11 @@ function App() {
 
   setInterval(() => {
     activities.forEach(function(activity) {
-        // var time = timer(activity);
-        //   if(time){   
-            // sendNotification(activity);
-            // console.log("email sended");
-        // }
+        var time = timer(activity);
+          if(time){   
+            sendNotification(activity);
+            console.log("email sended");
+        }
     })
   }, 10000) 
 

@@ -105,7 +105,7 @@ const ActivityForm = forwardRef((props, ref)=> {
                 latitude: latitude
             }
         }
-        // announcementService.createAnnouncement(announcementDto);
+        announcementService.createAnnouncement(announcementDto);
         console.log(announcementDto)
         const announcements = JSON.parse(localStorage.getItem('announcements'));
         announcements.push(announcementDto);
