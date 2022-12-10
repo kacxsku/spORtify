@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 import static com.spORtify.web.utilities.Constants.ANNOUNCEMENT_PATH;
 
 @RestController
@@ -42,7 +44,7 @@ public class AnnouncementController {
     }
 
     @PutMapping(ANNOUNCEMENT_PATH + "/{announcementToUpdateId}")
-    public Announcement updateAnnouncement(@RequestBody AnnouncementDto announcementDto, @PathVariable String announcementToUpdateId) {
+    public Announcement updateAnnouncement(@RequestBody AnnouncementDto announcementDto, @PathVariable String announcementToUpdateId) throws ParseException {
         return announcementService.updateAnnouncement(announcementToUpdateId,announcementDto);
     }
 

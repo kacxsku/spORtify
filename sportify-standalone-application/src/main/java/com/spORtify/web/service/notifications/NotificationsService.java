@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface NotificationsService {
     List<Notification> getAllUserNotifications(String userId);
-    Notification createNotification(NotificationDto notificationDto);
+    void createNotification(NotificationDto notificationDto);
 
 }

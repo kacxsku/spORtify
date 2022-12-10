@@ -19,9 +19,9 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long notificationId;
 
-    @OneToOne
-    @JoinColumn(name = "ImportanceLevelId", nullable = false, insertable = false, updatable = false)
-    private ImportanceLevel importanceLevel;
+//    @OneToOne
+//    @JoinColumn(name = "ImportanceLevelId", nullable = false, insertable = false, updatable = false)
+//    private ImportanceLevel importanceLevel;
 
     private String title;
 

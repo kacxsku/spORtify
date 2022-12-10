@@ -30,6 +30,8 @@ public class Constants {
     public static final String ALL_NOTIFICATIONS_PATH = NOTIFICATIONS_PATH + "/all";
     public static final String REMINDER_NOTIFICATION_PATH = NOTIFICATIONS_PATH + "/reminder";
 
+    public static final String NOTIFICATION_PATH = "/notification";
+
     //opinion
     public static final String OPINION_PATH = "/opinion";
     public static final String OPINIONS_PATH = "/opinions";

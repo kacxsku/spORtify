@@ -9,6 +9,7 @@ import com.spORtify.web.utilities.mapper.AnnouncementDtoMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -29,7 +30,7 @@ public class AnnouncementServiceImpl implements AnnouncementService{
     }
 
     @Override
-    public Announcement updateAnnouncement(String announcementToUpdateId, AnnouncementDto announcementDto) {
+    public Announcement updateAnnouncement(String announcementToUpdateId, AnnouncementDto announcementDto) throws ParseException {
         var announcement = announcementDtoMapper.mapDto(announcementDto);
         var id = Long.parseLong(announcementToUpdateId);
 
@@ -43,7 +44,7 @@ public class AnnouncementServiceImpl implements AnnouncementService{
     }
 
     @Override
-    public void addAnnouncement(AnnouncementDto announcementDto) {
+    public void addAnnouncement(AnnouncementDto announcementDto) throws ParseException {
         var announcement = announcementDtoMapper.mapDto(announcementDto);
 
         coordinateRepository.save(announcement.getCoordinate());

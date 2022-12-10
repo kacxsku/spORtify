@@ -15,6 +15,8 @@ public class AnnouncementDto {
     private String title;
 
     private String content;
+    private String date;
+    private String time;
 
     private User creator;
 

@@ -18,7 +18,7 @@ public class Coordinate {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long coordinateId;
 
-    private Double longitude;
+    private String longitude;
 
-    private Double latitude;
+    private String latitude;
 }

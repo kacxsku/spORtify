@@ -8,7 +8,8 @@ import lombok.Setter;
 public class NotificationDto {
 
     private String userId;
-    private String importanceLevel;
+
     private String title;
-    private String description;
+
+    private String message;
 }

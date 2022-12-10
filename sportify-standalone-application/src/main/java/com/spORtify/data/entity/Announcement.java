@@ -26,18 +26,18 @@ public class Announcement {
 
     private String content;
 
-    private Date date;
+    private String date;
 
     @OneToOne
-    @JoinColumn(name = "creator", insertable=false, updatable=false, nullable = false)
+    @JoinColumn(name = "creator")
     private User creator;
 
     @OneToOne
-    @JoinColumn(name = "participant", insertable=false)
+    @JoinColumn(name = "participant")
     private User participant;
 
     @OneToOne
-    @JoinColumn(name = "coordinateId", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "coordinateId")
     private Coordinate coordinate;
 
     @OneToMany(cascade = CascadeType.ALL)
