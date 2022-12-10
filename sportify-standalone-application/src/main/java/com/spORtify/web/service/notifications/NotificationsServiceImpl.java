@@ -28,9 +28,6 @@ public class NotificationsServiceImpl implements NotificationsService{
 
     @Override
     public void createNotification(NotificationDto notificationDto) {
-        if(notificationRepository.findByDescriptionAndUser(notificationDto.getMessage(), userRepository.findUserByUserId(Long.parseLong(notificationDto.getUserId()))) == null){
             notificationRepository.save(notificationDtoMapper.mapDto(notificationDto));
-        }
     }
-
 }
