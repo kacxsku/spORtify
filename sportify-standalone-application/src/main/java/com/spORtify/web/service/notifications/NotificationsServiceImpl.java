@@ -2,6 +2,7 @@ package com.spORtify.web.service.notifications;
 
 import com.spORtify.data.entity.Notification;
 import com.spORtify.data.repository.NotificationRepository;
+import com.spORtify.data.repository.UserRepository;
 import com.spORtify.web.dto.NotificationDto;
 import com.spORtify.web.utilities.mapper.NotificationDtoMapper;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,8 @@ public class NotificationsServiceImpl implements NotificationsService{
     private NotificationRepository notificationRepository;
     private NotificationDtoMapper notificationDtoMapper;
 
+    private UserRepository userRepository;
+
     @Override
     public List<Notification> getAllUserNotifications(String userId) {
         var id = Long.parseLong(userId);
@@ -25,8 +28,9 @@ public class NotificationsServiceImpl implements NotificationsService{
 
     @Override
     public void createNotification(NotificationDto notificationDto) {
-
-         notificationRepository.save(notificationDtoMapper.mapDto(notificationDto));
+        if(notificationRepository.findByDescriptionAndUser(notificationDto.getMessage(), userRepository.findUserByUserId(Long.parseLong(notificationDto.getUserId()))) == null){
+            notificationRepository.save(notificationDtoMapper.mapDto(notificationDto));
+        }
     }
 
 }
