@@ -38,6 +38,7 @@ const Menu = () => {
       const handleBadgeVisibility = () => {
         setInvisible(!invisible);
       };
+      console.log("invisible", invisible)
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;

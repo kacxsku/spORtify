@@ -102,12 +102,11 @@ const Activities = () => {
 
     return (
         <div className="PageContent">
-            <Menu />
-            <div className="content">
+            <div className="content" style={{alignItems: "flex-start", marginTop: "2em"}}>
                 {!isLoading && ( !announcements || announcements.length === 0 ? (                          
                 <Typography gutterBottom variant="subtitle1" component="div">
                     No data ...
-                </Typography>) : <ActivitiesList announcements={announcements} path="activity/"   />)}
+                </Typography>) : <ActivitiesList announcements={announcements} path="activity/"  text="Activities created by You" />)}
             </div>
             <RightPageContent />
         </div>

@@ -15,33 +15,13 @@ import {Chat} from './pages/messages'
 import { UserContextProvider } from "./context/userContext";
 import announcementsService from "./service/announcementsService";
 import {timer, sendNotification} from "./notifications/sendNotification"
+import { Menu } from './components/Menu';
 
 function App() {
-  const[activities, setActivities] = useState([])
-
-  useEffect(() => {
-    announcementsService.getAllAnnouncements()
-    .then(announcements => {
-        setActivities(announcements);
-        localStorage.setItem("announcements", JSON.stringify(announcements));
-        console.log("get all announcement operation for notificationssuccessfully finish", announcements);
-    }).catch(error => {
-        console.log("unable to get all announcements",error)
-    })
-  },[])
-
-  setInterval(() => {
-    activities.forEach(function(activity) {
-        var time = timer(activity);
-          if(time){   
-            sendNotification(activity);
-            console.log("email sended");
-        }
-    })
-  }, 10000) 
 
   return (
     <UserContextProvider>
+      {!(window.location.pathname === "/" || window.location.pathname === "/register") ?  <Menu /> : null}
       <Routes>
           <Route path="/"  element={<LoginPage />}/>
           <Route path="/register"  element={<RegisterPage />}/>

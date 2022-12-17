@@ -14,9 +14,12 @@ const Calendar = ({setFormDate, setFormTime}) => {
     const [time, setTime] = useState(dayjs(new Date()));
 
     const handleDateChange = (newValue) => {
+        console.log(newValue);
         var dateField = new Date(newValue)
         setDate(newValue);
-        var finalDate = dateField.getDate() + ' ' +  dateField.getMonth() + ' ' +  dateField.getFullYear()
+        const month = dateField.getMonth()+1;
+        console.log(month);
+        var finalDate =  dateField.getFullYear() + "-" +   month+ '-' + dateField.getDate();
         setFormDate(finalDate);
       };
 
@@ -45,9 +48,13 @@ const Calendar = ({setFormDate, setFormTime}) => {
             </LocalizationProvider>
             <LocalizationProvider  dateAdapter={AdapterDayjs}>
                 <TimePicker
+                clearable
                     label="Enter time"
-                    inputFormat="hh:mm"
                     ampm={false}
+                    openTo="hours"
+                    views={['hours', 'minutes']}
+                    inputFormat="HH:mm"
+                    mask="__:__"
                     value={time.format("L LT")}
                     onChange={(x, event) => handleTimeChange(x,event)}
                     renderInput={(params) => <TextField sx={{width: "10em",  size: "small",  marginRight: "1em", marginTop: "1em"}

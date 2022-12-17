@@ -15,26 +15,28 @@ const apiKey = {
 }
 
 
-const deleteItemAfterMeeting = ({item}) => {
+const deleteItemAfterMeeting = (item) => {
     const announcements = JSON.parse(localStorage.getItem('announcements'));
-    var index = announcements.indexOf(item);
-    if (index !== -1) {
-      announcements.splice(index, 1);
-    }
-    localStorage.setItem("announcements", JSON.stringify(announcements));
+    const ann = announcements.filter(obj => {return obj.announcementId != item.announcementId;});
+    console.log("deleted");
+    localStorage.setItem("announcements", JSON.stringify(ann));
 }	
 
 const timer = (activity) => {
+    console.log("notification?", activity)
     // różnica czasów wyslania powiadomienia w minutach
     const notificationsTimeInMinutes = [60, 180, 300, 1440];
-    // const deadline = activity.date;
-    const deadline = "2022-12-10 16:55";
-    console.log("sendddd")
+    const deadline = activity.date;
+    console.log(deadline);
+    // const deadline = "2022-12-10 16:55";
     const date = new dayjs(new Date());
+    console.log("actual date", date);
     const deadlineDate = new dayjs(deadline);
+    console.log("deadline", deadlineDate);
+
     //różnica między datami w minutach
     let diff = deadlineDate.diff(date, "m");     
-    console.log("d", diff) 
+    console.log("diff", diff) 
     console.log("dddd", notificationsTimeInMinutes.includes(diff)) 
 
     if(diff < 50 ){
@@ -52,8 +54,8 @@ const sendNotification = (notificationData) => {
     console.log(notificationMessage);
 
     const templateParams = {
-        to_mail: notificationData.participant.email,
-        to_name: notificationData.participant.name,
+        to_mail: "kacperspam23@gmail.com",
+        to_name: notificationData.creator.name,
         message: notificationMessage
     }
 

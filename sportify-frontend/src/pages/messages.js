@@ -6,7 +6,6 @@ import ChatHome from '../components/ChatHome'
 const Chat = () => {
     return (
         <div className="PageContent">
-            <Menu />
             <div className="content">
                 <ChatHome />
             </div>

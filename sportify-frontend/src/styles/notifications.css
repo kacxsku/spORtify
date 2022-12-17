@@ -22,5 +22,5 @@
 .NotificationsContent {
     display: flex;
     flex-direction: column;
-    margin-right: auto;
+    /* margin-right: auto; */
 }

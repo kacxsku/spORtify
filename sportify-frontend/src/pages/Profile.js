@@ -7,6 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { Rating } from '@mui/material';
 import Box from '@mui/material/Box';
+import { MarginTwoTone } from "@mui/icons-material";
 
 const ActivityOpinion = () => {
     const [value, setValue] = useState(null);
@@ -57,12 +58,11 @@ const Profile = () => {
 
     return (
         <div className="PageContent">
-            <Menu />
-            <div className="content">
+            <div className="content" style={{alignItems: "flex-start", marginTop: "2em"}}>
                 {!isLoading && ( announcements.length === 0 ? (                          
                 <Typography gutterBottom variant="subtitle1" component="div">
                     No data ...
-                </Typography>) : <ActivitiesList announcements={announcements} path="activity/"  />)}
+                </Typography>) : <ActivitiesList announcements={announcements} path="activity/"  text="Activities in which You participated" />)}
             </div>
             <RightPageContent />
         </div>

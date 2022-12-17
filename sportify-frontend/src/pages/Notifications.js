@@ -50,12 +50,11 @@ const Notifications = () => {
 
     return (
         <div className="PageContent">
-            <Menu />
-            <div className="NotificationsContent">
+                <div className="content" style={{alignItems: "center"}}>
                 <List className='NotificationsList' sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                     {notifications.map(notification => <NotificationsListItem key={notification.notificationId} n={notification} /> )}
                 </List>
-            </div>    
+                </div>
             <RightPageContent />
         </div>
     )

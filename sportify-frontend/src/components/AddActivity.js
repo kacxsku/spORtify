@@ -1,4 +1,4 @@
-import React, {useState, useRef, forwardRef, useContext} from "react";
+import React, {useState, useRef, forwardRef, useContext, useEffect} from "react";
 import { Button, IconButton } from "@material-ui/core";
 import { FormTextField,  MulitlineFormTextField } from "../components/FormTextFields";
 import { TextField } from "@material-ui/core";
@@ -26,6 +26,7 @@ const AddActivityModal = () => {
         setOpen(false);
     } 
 
+
     return (
         <div>
             <IconButton  variant="contained"  style={{
@@ -47,10 +48,13 @@ const AddActivityModal = () => {
     )
 }
 
-const ActivityPrimaryData = ({setFormTitle, setFormDate, setFormTime}) => {
+const ActivityPrimaryData = ({setFormTitle, setFormDate, setFormTime, setLongitude, setLatitude}) => {
+
+
     const handleInputChange =(value) => {
         setFormTitle(value);    
     }
+
     return (
         <div className="ActivityPrimaryData">
         <TextField
@@ -65,7 +69,7 @@ const ActivityPrimaryData = ({setFormTitle, setFormDate, setFormTime}) => {
         }}
         />
         <Calendar setFormDate={setFormDate} setFormTime={setFormTime} />
-        <MapFinder />
+        <MapFinder setLongitude={setLongitude} setLatitude={setLatitude} />
     </div>
     )
 }
@@ -105,11 +109,12 @@ const ActivityForm = forwardRef((props, ref)=> {
                 latitude: latitude
             }
         }
-        announcementService.createAnnouncement(announcementDto);
+       announcementService.createAnnouncement(announcementDto);
         console.log(announcementDto)
         const announcements = JSON.parse(localStorage.getItem('announcements'));
         announcements.push(announcementDto);
         localStorage.setItem("announcements", JSON.stringify(announcements));
+        console.log("added to localstorage")
 
         props.onClose()
     }
@@ -135,7 +140,7 @@ const ActivityForm = forwardRef((props, ref)=> {
                 <div className="NewActivityForm">
                     <ActivititesFilters sx={{margin:0}} setFilter={setFilter} />
                     <div className="ActivityData" sx={{padding: "1em"}}>
-                        <ActivityPrimaryData setFormTitle={setTitle} setFormDate={setDate} setFormTime={setTime} />
+                        <ActivityPrimaryData setFormTitle={setTitle} setFormDate={setDate} setFormTime={setTime}  setLongitude={setLongitude} setLatitude={setlatitude} />
                         <TextField required multiline {...{
                             minRows: 14,
                             id: "AddActivityMulitlineFormTextField",

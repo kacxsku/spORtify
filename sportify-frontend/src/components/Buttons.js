@@ -27,7 +27,7 @@ const RoundedIconButton = ({id ,Icon}) => {
             color: "inherit"
             } } 
             >
-            <Icon fontSize="medium"/>
+            <Icon fontSize="large"/>
         </IconButton>
         </div>
     )

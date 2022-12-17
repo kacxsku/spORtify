@@ -14,7 +14,8 @@ const MapView = ({longitude, latitude}) => {
     const map = useRef(null);
     const [lng, setLng] = useState(longitude ? longitude : -70.9);
     const [lat, setLat] = useState(latitude ? latitude : 42.35);
-    const [zoom, setZoom] = useState(7);
+    const [zoom, setZoom] = useState(10);
+    console.log("long", longitude)
 
     useEffect(() => {
         if (map.current) return; 
@@ -24,15 +25,11 @@ const MapView = ({longitude, latitude}) => {
             style: 'mapbox://styles/mapbox/streets-v12',
             viewState: {
                 width: "2em",
-                height: "5em"
+                height: "4em"
             },
             center: [lng, lat],
             zoom: zoom,
         });
-
-        // map.current.on('load', function () {
-        //     map.resize();
-        // });
 
         new mapboxgl.Marker({
             color: "#ff1500",
@@ -74,15 +71,29 @@ const getLocation = () => {
     return navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 }
 
-export function MapFinder(){
+export function MapFinder({setLongitude, setLatitude}){
     const mapContainer = useRef(null);
     const map = useRef(null);
     const geocoder = useRef(null);
-    const [lng, setLng] = useState(-70.9);
-    const [lat, setLat] = useState(42.35);
+
+    const [lng, setLng] = useState(19.1451);
+    const [lat, setLat] = useState( 51.9194);
     const [zoom, setZoom] = useState(7);
 
+    function successFunction(position) {
+        var userLatitude = position.coords.latitude;
+        var userLongitude = position.coords.longitude;
+    }
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successFunction);
+    }
+
+
+
     useEffect(() => {
+
+
         if (map.current) return; 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -99,7 +110,17 @@ export function MapFinder(){
                 }, 
             placeholder: 'Search for places',
           });
+
           map.current.addControl(geocoder.current);
+          map.current.addControl(
+            new mapboxgl.GeolocateControl({
+            positionOptions: {
+            enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+            }));
+
     });
     
     useEffect(() => {
@@ -114,10 +135,11 @@ export function MapFinder(){
         });
     });
 
-      geocoder.current.on('result', (event) => {
-        map.getSource('single-point').setData(event.result.geometry);
+    geocoder.current.on('result', function(ev) {
+        setLongitude(ev.result.geometry.coordinates[0]);
+        setLatitude(ev.result.geometry.coordinates[1])
+        map.current.getSource('single-point').setData(ev.result.geometry);
       });
-
     });
 
     return (

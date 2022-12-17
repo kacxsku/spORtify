@@ -25,8 +25,6 @@ const AppHeader = () =>{
     const applicationLogo = (
         <Typography variant="h6" component="h1">
             spORtify
-            {/* <img src="images/logo.svg" alt="logo"/> */}
-
         </Typography>
     )
     const getLoginPageButtons = () => {
@@ -52,6 +50,12 @@ const AppHeader = () =>{
       const handleClickAway = () => {
         setOpen(false);
       };
+
+      const checkAuthorization = () =>{
+        
+      }
+
+
       return (
         <ClickAwayListener onClickAway={handleClickAway}>
         <AppBar className="LoginPageHeader" style={{      backgroundColor: 'transparent', boxShadow: 'none',}}>
@@ -69,7 +73,9 @@ const AppHeader = () =>{
                         <FormTextField id="LoginFormEmailTextField" label = "email" />
                         <FormPasswordField id="LoginFormPasswordTextField" label = "password" />
                         <p className="ForgetPassword">I forget password</p>
-                        <Button component={RouterLink} to= "/home" style={{
+                        <Button component={RouterLink} to= "/home" 
+                        onClick={checkAuthorization}
+                        style={{
                             borderRadius: 2,
                             borderColor: "black",
                             border: 1

@@ -13,16 +13,31 @@ import announcementsService from '../service/announcementsService'
 import announcementService from "../service/announcementService";
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button'
+import {timer, sendNotification} from "../notifications/sendNotification"
 
 const Home = () => {
     const [isLoading, setLoading] = useState(true);
     const [announcements, setAnnouncements] = useState([]);
     const [currentAnnouncement, setCurrentAnnouncement] = useState("");
+  
+    setInterval(() => {
+      console.log("time");
+        const activities = JSON.parse(localStorage.getItem('announcements'));
+        console.log("announcementsnot", activities);
+        activities.forEach(function(activity) {
+          var time = timer(activity);
+            if(time) {   
+              sendNotification(activity);
+              console.log("email sended");
+          }
+      })
+    }, 10000)
 
     useEffect(() => {
         announcementsService.getAllAnnouncements()
         .then(announcements => {
             setAnnouncements(announcements);
+            localStorage.setItem("announcements", JSON.stringify(announcements));
             setLoading(false);
             console.log("get all announcement operation successfully finish", announcements);
         }).catch(error => {
@@ -49,26 +64,26 @@ const Home = () => {
         return (
             <div className="Search">
                 <TextField
-                    sx={{width: "30em", height: "4em", size: "small", marginRight: "2em"}}
+                    sx={{width: "30em", height: "4em", size: "small", marginRight: "1em"}}
                     placeholder="Search"
                     inputProps={{ 'aria-label': 'search' }}
                 />
-                <Calendar />
                 <RoundedIconButton id="searchButton" Icon={SearchIcon}/>
+                <Calendar />
             </div>
         )
     }
 
     return (
         <div className="PageContent">
-            <Menu />
-            <div className="content">
+            {/* <Menu /> */}
+            <div className="content" style={{alignItems: "center"}}>
                 <ActivititesFilters />
                 <div className="SearchAnnouncementList">
                     <SearchInput />
                     {console.log("check home")}
                     {!isLoading && 
-                    <ActivitiesList announcements={announcements} path="activity/"  />
+                    <ActivitiesList announcements={announcements} path="activity/" style={{bgcolor: 'background.paper', margin: "0.5em", alignItems:"center"}} />
                     }
                     
                 </div>
